@@ -1,1 +1,325 @@
-[]
+[
+ {
+  "id": "team-1",
+  "displayName": "Boune & Tsuu",
+  "members": [
+   {
+    "pseudo": "Boune",
+    "class": "Eliotrope"
+   },
+   {
+    "pseudo": "Tsuu",
+    "class": "Sacrieur"
+   }
+  ],
+  "progressStepId": "reine-nyee",
+  "status": "alive",
+  "deathStepId": null,
+  "dungeonStats": [],
+  "lastUpdate": "2026-10-06T15:55:46+02:00"
+ },
+ {
+  "id": "team-2",
+  "displayName": "Oms & Cae",
+  "members": [
+   {
+    "pseudo": "Oms",
+    "class": "Eniripsa"
+   },
+   {
+    "pseudo": "Cae",
+    "class": "Sadida"
+   }
+  ],
+  "progressStepId": "reine-nyee",
+  "status": "alive",
+  "deathStepId": null,
+  "dungeonStats": [],
+  "lastUpdate": "2026-10-06T15:55:46+02:00"
+ },
+ {
+  "id": "team-3",
+  "displayName": "Hof & Nordes",
+  "members": [
+   {
+    "pseudo": "Hof",
+    "class": "Zobal"
+   },
+   {
+    "pseudo": "Nordes",
+    "class": "Forgelance"
+   }
+  ],
+  "progressStepId": "reine-nyee",
+  "status": "alive",
+  "deathStepId": null,
+  "dungeonStats": [],
+  "lastUpdate": "2026-10-06T15:55:46+02:00"
+ },
+ {
+  "id": "team-4",
+  "displayName": "Boomie & Vina",
+  "members": [
+   {
+    "pseudo": "Boomie",
+    "class": "Pandawa"
+   },
+   {
+    "pseudo": "Vina",
+    "class": "Xelor"
+   }
+  ],
+  "progressStepId": "reine-nyee",
+  "status": "alive",
+  "deathStepId": null,
+  "dungeonStats": [],
+  "lastUpdate": "2026-10-06T15:55:46+02:00"
+ },
+ {
+  "id": "team-5",
+  "displayName": "Cactus & Tauxic",
+  "members": [
+   {
+    "pseudo": "Cactus",
+    "class": "Roublard"
+   },
+   {
+    "pseudo": "Tauxic",
+    "class": "Sadida"
+   }
+  ],
+  "progressStepId": "reine-nyee",
+  "status": "alive",
+  "deathStepId": null,
+  "dungeonStats": [],
+  "lastUpdate": "2026-10-06T15:55:46+02:00"
+ },
+ {
+  "id": "team-6",
+  "displayName": "Rata & Poh",
+  "members": [
+   {
+    "pseudo": "Rata",
+    "class": "Sadida"
+   },
+   {
+    "pseudo": "Poh",
+    "class": "Huppermage"
+   }
+  ],
+  "progressStepId": "reine-nyee",
+  "status": "alive",
+  "deathStepId": null,
+  "dungeonStats": [],
+  "lastUpdate": "2026-10-06T15:55:46+02:00"
+ },
+ {
+  "id": "team-7",
+  "displayName": "Aizen & Ez",
+  "members": [
+   {
+    "pseudo": "Aizen",
+    "class": "Roublard"
+   },
+   {
+    "pseudo": "Ez",
+    "class": "Forgelance"
+   }
+  ],
+  "progressStepId": "reine-nyee",
+  "status": "alive",
+  "deathStepId": null,
+  "dungeonStats": [],
+  "lastUpdate": "2026-10-06T15:55:46+02:00"
+ },
+ {
+  "id": "team-8",
+  "displayName": "Sora & Bhalzo",
+  "members": [
+   {
+    "pseudo": "Sora",
+    "class": "Enutrof"
+   },
+   {
+    "pseudo": "Bhalzo",
+    "class": "Xelor"
+   }
+  ],
+  "progressStepId": "reine-nyee",
+  "status": "alive",
+  "deathStepId": null,
+  "dungeonStats": [],
+  "lastUpdate": "2026-10-06T15:55:46+02:00"
+ },
+ {
+  "id": "team-9",
+  "displayName": "Le Chut",
+  "members": [
+   {
+    "pseudo": "Le Chut",
+    "class": "Sram"
+   },
+   {
+    "pseudo": "Le Chut",
+    "class": "Steameur"
+   }
+  ],
+  "progressStepId": "reine-nyee",
+  "status": "alive",
+  "deathStepId": null,
+  "dungeonStats": [],
+  "lastUpdate": "2026-10-06T15:55:46+02:00"
+ },
+ {
+  "id": "team-10",
+  "displayName": "Fourmi",
+  "members": [
+   {
+    "pseudo": "Fourmi",
+    "class": "Ouginak"
+   },
+   {
+    "pseudo": "Fourmi",
+    "class": "Ecaflip"
+   }
+  ],
+  "progressStepId": "reine-nyee",
+  "status": "alive",
+  "deathStepId": null,
+  "dungeonStats": [],
+  "lastUpdate": "2026-10-06T15:55:46+02:00"
+ },
+ {
+  "id": "team-11",
+  "displayName": "Cha & Norman",
+  "members": [
+   {
+    "pseudo": "Cha",
+    "class": "Ecaflip"
+   },
+   {
+    "pseudo": "Norman",
+    "class": "Eliotrope"
+   }
+  ],
+  "progressStepId": "reine-nyee",
+  "status": "alive",
+  "deathStepId": null,
+  "dungeonStats": [],
+  "lastUpdate": "2026-10-06T15:55:46+02:00"
+ },
+ {
+  "id": "team-12",
+  "displayName": "Farkas & Toums",
+  "members": [
+   {
+    "pseudo": "Farkas",
+    "class": "Xelor"
+   },
+   {
+    "pseudo": "Toums",
+    "class": "Iop"
+   }
+  ],
+  "progressStepId": "reine-nyee",
+  "status": "alive",
+  "deathStepId": null,
+  "dungeonStats": [],
+  "lastUpdate": "2026-10-06T15:55:46+02:00"
+ },
+ {
+  "id": "team-13",
+  "displayName": "Murgia & Spyri",
+  "members": [
+   {
+    "pseudo": "Murgia",
+    "class": "Crâ"
+   },
+   {
+    "pseudo": "Spyri",
+    "class": "Sacrieur"
+   }
+  ],
+  "progressStepId": "reine-nyee",
+  "status": "alive",
+  "deathStepId": null,
+  "dungeonStats": [],
+  "lastUpdate": "2026-10-06T15:55:46+02:00"
+ },
+ {
+  "id": "team-14",
+  "displayName": "Sedgyfergo",
+  "members": [
+   {
+    "pseudo": "Sedgyfergo",
+    "class": "Xelor"
+   },
+   {
+    "pseudo": "Sedgyfergo",
+    "class": "Huppermage"
+   }
+  ],
+  "progressStepId": "reine-nyee",
+  "status": "alive",
+  "deathStepId": null,
+  "dungeonStats": [],
+  "lastUpdate": "2026-10-06T15:55:46+02:00"
+ },
+ {
+  "id": "team-15",
+  "displayName": "Specymen & Yogi",
+  "members": [
+   {
+    "pseudo": "Specymen",
+    "class": "Enutrof"
+   },
+   {
+    "pseudo": "Yogi",
+    "class": "Huppermage"
+   }
+  ],
+  "progressStepId": "reine-nyee",
+  "status": "alive",
+  "deathStepId": null,
+  "dungeonStats": [],
+  "lastUpdate": "2026-10-06T15:55:46+02:00"
+ },
+ {
+  "id": "team-16",
+  "displayName": "Genessis",
+  "members": [
+   {
+    "pseudo": "Genessis",
+    "class": "Xelor"
+   },
+   {
+    "pseudo": "Genessis",
+    "class": "Forgelance"
+   }
+  ],
+  "progressStepId": "reine-nyee",
+  "status": "alive",
+  "deathStepId": null,
+  "dungeonStats": [],
+  "lastUpdate": "2026-10-06T15:55:46+02:00"
+ },
+ {
+  "id": "team-17",
+  "displayName": "Goldencookie",
+  "members": [
+   {
+    "pseudo": "Goldencookie",
+    "class": "Ouginak"
+   },
+   {
+    "pseudo": "Goldencookie",
+    "class": "Enutrof"
+   }
+  ],
+  "progressStepId": "reine-nyee",
+  "status": "alive",
+  "deathStepId": null,
+  "dungeonStats": [],
+  "lastUpdate": "2026-10-06T15:55:46+02:00"
+ }
+]
