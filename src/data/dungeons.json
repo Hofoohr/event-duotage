@@ -4,21 +4,21 @@
   "name": "Reine Nyée",
   "level": 105,
   "order": 1,
-  "iconUrl": "boss/reine-nyee.jpg"
+  "iconUrl": "boss/reine-nyee.png"
  },
  {
   "id": "maitre-corbac",
   "name": "Maître Corbac",
   "level": 105,
   "order": 2,
-  "iconUrl": "boss/maitre-corbac.jpg"
+  "iconUrl": "boss/maitre-corbac.png"
  },
  {
   "id": "rat-noir",
   "name": "Rat Noir",
   "level": 105,
   "order": 3,
-  "iconUrl": "boss/rat-noir.jpg"
+  "iconUrl": "boss/rat-noir.png"
  },
  {
   "id": "croca",
@@ -32,70 +32,70 @@
   "name": "Mansot Royal",
   "level": 105,
   "order": 5,
-  "iconUrl": "boss/mansot-royal.jpg"
+  "iconUrl": "boss/mansot-royal.png"
  },
  {
   "id": "haute-truche",
   "name": "Haute Truche",
   "level": 105,
   "order": 6,
-  "iconUrl": "boss/haute-truche.jpg"
+  "iconUrl": "boss/haute-truche.png"
  },
  {
   "id": "chene-mou",
   "name": "Chêne Mou",
   "level": 165,
   "order": 7,
-  "iconUrl": "boss/chene-mou.jpg"
+  "iconUrl": "boss/chene-mou.png"
  },
  {
   "id": "sphincter-cell",
   "name": "Sphincter Cell",
   "level": 165,
   "order": 8,
-  "iconUrl": "boss/sphincter-cell.jpg"
+  "iconUrl": "boss/sphincter-cell.png"
  },
  {
   "id": "hell-mina",
   "name": "Hell Mina",
   "level": 165,
   "order": 9,
-  "iconUrl": "boss/hell-mina.jpg"
+  "iconUrl": "boss/hell-mina.png"
  },
  {
   "id": "kimbo",
   "name": "Kimbo",
   "level": 165,
   "order": 10,
-  "iconUrl": "boss/kimbo.jpg"
+  "iconUrl": "boss/kimbo.png"
  },
  {
   "id": "kanigroula",
   "name": "Kanigroula",
   "level": 165,
   "order": 11,
-  "iconUrl": "boss/kanigroula.jpg"
+  "iconUrl": "boss/kanigroula.png"
  },
  {
   "id": "koumiho",
   "name": "Koumiho",
   "level": 165,
   "order": 12,
-  "iconUrl": "boss/koumiho.jpg"
+  "iconUrl": "boss/koumiho.png"
  },
  {
   "id": "ombre",
   "name": "Ombre",
   "level": 165,
   "order": 13,
-  "iconUrl": "boss/ombre.jpg"
+  "iconUrl": "boss/ombre.png"
  },
  {
   "id": "bworker",
   "name": "Bworker",
   "level": 165,
   "order": 14,
-  "iconUrl": "boss/bworker.jpg"
+  "iconUrl": "boss/bworker.png"
  },
  {
   "id": "danti",
@@ -109,7 +109,7 @@
   "name": "Corruption",
   "level": 165,
   "order": 16,
-  "iconUrl": "boss/corruption.jpg",
+  "iconUrl": "boss/corruption.png",
   "freeOrder": true
  },
  {
@@ -117,7 +117,7 @@
   "name": "Barbéryl",
   "level": 165,
   "order": 17,
-  "iconUrl": "boss/barberyl.jpg",
+  "iconUrl": "boss/barberyl.png",
   "freeOrder": true
  },
  {
@@ -125,7 +125,7 @@
   "name": "Tal Kasha",
   "level": 165,
   "order": 18,
-  "iconUrl": "boss/tal-kasha.jpg",
+  "iconUrl": "boss/tal-kasha.png",
   "freeOrder": true
  },
  {
@@ -133,7 +133,7 @@
   "name": "Koutoulou",
   "level": 165,
   "order": 19,
-  "iconUrl": "boss/koutoulou.jpg",
+  "iconUrl": "boss/koutoulou.png",
   "freeOrder": true
  },
  {
@@ -141,7 +141,7 @@
   "name": "Misère",
   "level": 165,
   "order": 20,
-  "iconUrl": "boss/misere.jpg",
+  "iconUrl": "boss/misere.png",
   "freeOrder": true
  }
 ]
