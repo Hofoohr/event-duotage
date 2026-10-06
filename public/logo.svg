@@ -1,36 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Génération Miracle">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 950" role="img" aria-label="Génération Miracle">
   <defs>
     <linearGradient id="gm-rim" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#eef0f2"/><stop offset=".5" stop-color="#b4bac1"/><stop offset="1" stop-color="#7d848d"/>
+      <stop offset="0" stop-color="#f1f2f3"/><stop offset=".45" stop-color="#c3c5c8"/><stop offset="1" stop-color="#8f9296"/>
     </linearGradient>
-    <linearGradient id="gm-teal" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#22cdbb"/><stop offset="1" stop-color="#17ad9f"/>
-    </linearGradient>
-    <clipPath id="gm-face"><polygon points="50.00,6.50 62.74,19.24 80.76,19.24 80.76,37.26 93.50,50.00 80.76,62.74 80.76,80.76 62.74,80.76 50.00,93.50 37.26,80.76 19.24,80.76 19.24,62.74 6.50,50.00 19.24,37.26 19.24,19.24 37.26,19.24"/></clipPath>
-    <g id="gm-sword" fill="#4f5967">
-      <path d="M50 12l4.2 7.500-.8 29.500h-6.800l-.8-29.500z"/>
-      <rect x="49" y="48" width="2" height="44" rx="1"/>
-      <rect x="44" y="47" width="12" height="2.4" rx="1.2"/>
+    <clipPath id="gm-face"><polygon points="480,48 591,159 796,159 796,364 907,475 796,586 796,791 591,791 480,902 369,791 164,791 164,586 53,475 164,364 164,159 369,159"/></clipPath>
+    <g id="gm-blade" fill="#505a69">
+      <path d="M205 190L232 185L287 250L346 284L378 276L426 372L386 398L276 390L284 336L262 296Z"/>
     </g>
   </defs>
-  <polygon points="50.00,1.00 64.35,15.35 84.65,15.35 84.65,35.65 99.00,50.00 84.65,64.35 84.65,84.65 64.35,84.65 50.00,99.00 35.65,84.65 15.35,84.65 15.35,64.35 1.00,50.00 15.35,35.65 15.35,15.35 35.65,15.35" fill="url(#gm-rim)" stroke="#5b626b" stroke-width=".8" stroke-linejoin="round"/>
-  <polygon points="50.00,6.50 62.74,19.24 80.76,19.24 80.76,37.26 93.50,50.00 80.76,62.74 80.76,80.76 62.74,80.76 50.00,93.50 37.26,80.76 19.24,80.76 19.24,62.74 6.50,50.00 19.24,37.26 19.24,19.24 37.26,19.24" fill="url(#gm-teal)"/>
-  <g clip-path="url(#gm-face)" opacity=".5">
-    <polygon points="50,50 100,100 100,38 62,0 100,0" fill="#10a092" opacity=".0"/>
-    <polygon points="50,50 0,100 100,100 100,50" fill="#139e91" opacity=".35"/>
-    <polygon points="50,50 0,0 50,0" fill="#5be6d6" opacity=".35"/>
-    <polygon points="50,50 0,0 0,50" fill="#5be6d6" opacity=".2"/>
+  <polygon points="480,0 605,125 830,125 830,350 955,475 830,600 830,825 605,825 480,950 355,825 130,825 130,600 5,475 130,350 130,125 355,125" fill="url(#gm-rim)" stroke="#6a6e75" stroke-width="8" stroke-linejoin="round"/>
+  <polygon points="480,48 591,159 796,159 796,364 907,475 796,586 796,791 591,791 480,902 369,791 164,791 164,586 53,475 164,364 164,159 369,159" fill="#1cc6b5"/>
+  <g clip-path="url(#gm-face)">
+    <polygon points="480,48 591,159 622,200 545,248 405,248 340,185 369,159" fill="#16ac9e"/>
+    <polygon points="164,590 352,560 352,791 164,791" fill="#16ac9e" opacity=".8"/>
+    <polygon points="352,640 352,791 369,791 480,902 480,780" fill="#16ac9e" opacity=".8"/>
+    <polygon points="53,475 164,364 164,520" fill="#1fd0be"/>
   </g>
-  <use href="#gm-sword" transform="rotate(-40 50 55)"/>
-  <use href="#gm-sword" transform="rotate(40 50 55)"/>
-  <path d="M50 41l7 3.2 18 .8-5 5.5-.5 13c-.6 9-8.500 15.500-19.500 19.500-11-4-18.900-10.500-19.500-19.500l-.5-13-5-5.500 18-.8z"
-        fill="#1fbfae" stroke="#4f5967" stroke-width="2" stroke-linejoin="round"/>
-  <g fill="#4f5967">
-    <path d="M50 42c-7.500 0-12.500 4.800-12.500 11 0 3.500 1.800 6 4 7.600V69h17.000v-8.400c2.200-1.600 4-4.100 4-7.600 0-6.200-5-11-12.500-11z"/>
-  </g>
-  <g fill="#1fbfae">
-    <ellipse cx="45" cy="54" rx="3.200" ry="3.500"/><ellipse cx="55" cy="54" rx="3.200" ry="3.500"/>
-    <path d="M50 58.500l-2 3.800h4z"/>
-    <rect x="44" y="64.500" width="2" height="4"/><rect x="48" y="64.500" width="2" height="4"/><rect x="52" y="64.500" width="2" height="4"/><rect x="56" y="64.500" width="1.600" height="4"/>
+  <use href="#gm-blade"/>
+  <use href="#gm-blade" transform="translate(960 0) scale(-1 1)"/>
+  <path d="M312 636L342 672L250 782Z"  fill="#505a69"/>
+  <path d="M648 636L618 672L710 782Z" fill="#505a69"/>
+  <path d="M480 330L548 372L640 412L735 428L690 452L655 470L650 560Q640 660 560 730L480 782L398 730Q316 660 306 560L300 470L262 452L215 428L318 412L410 372Z"
+        fill="#1cc6b5" stroke="#505a69" stroke-width="15" stroke-linejoin="round"/>
+  <path fill="#505a69" d="M474 400C418 400 372 440 372 522C372 560 385 585 400 600L398 640L402 692L560 692L556 640L552 600C568 585 580 560 580 522C580 440 534 400 474 400Z"/>
+  <g fill="#1cc6b5">
+    <path d="M395 585Q430 572 464 600Q442 626 405 616Z"/>
+    <path d="M553 585Q518 572 484 600Q506 626 543 616Z"/>
+    <path d="M474 610L458 642L490 642Z"/>
+    <rect x="428" y="648" width="12" height="46"/><rect x="470" y="652" width="12" height="42"/><rect x="514" y="648" width="12" height="46"/>
   </g>
 </svg>
