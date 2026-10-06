@@ -10,6 +10,18 @@ const links = [
   { to: '/paris', label: 'Paris' },
 ]
 
+function Logo() {
+  return (
+    <NavLink
+      to="/"
+      aria-label="Génération Miracle — accueil"
+      className="absolute top-4 left-4 sm:top-6 sm:left-8 z-10 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400"
+    >
+      <img src={`${import.meta.env.BASE_URL}logo.svg`} alt="" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12" />
+    </NavLink>
+  )
+}
+
 function Navigation() {
   return (
     <nav
@@ -22,9 +34,9 @@ function Navigation() {
           to={l.to}
           end
           className={({ isActive }) =>
-            `px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 ${
+            `px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base font-medium transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 ${
               isActive
-                ? 'bg-blue-600 text-white'
+                ? 'bg-brand-600 text-white'
                 : 'bg-gray-800/80 text-gray-300 hover:bg-gray-700/80'
             }`
           }
@@ -40,6 +52,7 @@ export default function App() {
   return (
     <HashRouter>
       <div className="min-h-screen bg-gray-950">
+        <Logo />
         <Navigation />
         <main>
           <Routes>

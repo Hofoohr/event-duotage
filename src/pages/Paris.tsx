@@ -13,7 +13,7 @@ const tiers: Record<Tier, { label: string; hint: string; badge: string }> = {
   medium: {
     label: 'Cote moyenne',
     hint: 'Outsider, victoire possible',
-    badge: 'bg-blue-900/40 text-blue-300 border-blue-600/40',
+    badge: 'bg-sky-900/40 text-sky-300 border-sky-600/40',
   },
   high: {
     label: 'Cote élevée',
@@ -48,9 +48,9 @@ export default function Paris() {
         title="Paris du tournoi"
         subtitle="Consultez les cotes actuelles et le détail des paris. Les données sont mises à jour manuellement et ne sont pas interactives."
       >
-        <div className="bg-gradient-to-r from-purple-900/30 to-pink-900/30 backdrop-blur-sm rounded-lg px-6 py-4 border border-purple-600/30 inline-block">
-          <p className="text-sm text-purple-300 mb-1">Cagnotte totale de paris</p>
-          <p className="text-2xl sm:text-3xl font-black text-purple-300">{kamas(bets.totalPot)}</p>
+        <div className="bg-gradient-to-r from-brand-900/60 to-gray-900/60 backdrop-blur-sm rounded-lg px-6 py-4 border border-brand-600/40 inline-block">
+          <p className="text-sm text-brand-300 mb-1">Cagnotte totale de paris</p>
+          <p className="text-2xl sm:text-3xl font-black text-brand-300">{kamas(bets.totalPot)}</p>
         </div>
       </Hero>
 
