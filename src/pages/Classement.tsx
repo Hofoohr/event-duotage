@@ -19,14 +19,14 @@ import {
 const cellStyle: Record<CellStatus, string> = {
   completed: 'bg-green-900/40',
   death: 'bg-red-900/50',
-  'in-progress': 'bg-blue-900/40',
+  'in-progress': 'bg-brand-900/40',
   'not-reached': 'bg-gray-800/20',
 }
 
 const segmentStyle: Record<CellStatus, string> = {
   completed: 'bg-green-500',
   death: 'bg-red-500',
-  'in-progress': 'bg-blue-500 motion-safe:animate-pulse',
+  'in-progress': 'bg-brand-500 motion-safe:animate-pulse',
   'not-reached': 'bg-gray-700',
 }
 
@@ -49,7 +49,7 @@ function Chips({ p }: { p: Participant }) {
       {p.members.map(m => (
         <span
           key={m.pseudo}
-          className="px-2 py-1 rounded bg-blue-600/20 border border-blue-600/30 text-xs text-blue-300"
+          className="px-2 py-1 rounded bg-brand-600/20 border border-brand-600/30 text-xs text-brand-300"
         >
           {m.pseudo}
           {m.class ? ` • ${m.class}` : ''}
@@ -78,7 +78,7 @@ function TeamName({ p, open, toggle }: { p: Participant; open: boolean; toggle: 
       type="button"
       onClick={toggle}
       aria-expanded={open}
-      className="font-bold text-white mb-2 hover:text-blue-400 transition-colors text-left flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
+      className="font-bold text-white mb-2 hover:text-brand-400 transition-colors text-left flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400 rounded"
     >
       {p.displayName}
       <span aria-hidden="true" className="text-xs text-gray-500">
@@ -107,7 +107,7 @@ function Cell({ p, index }: { p: Participant; index: number }) {
   const status = cellStatus(p, d)
   return (
     <td
-      className={`px-4 py-4 text-center min-w-[110px] ${startsGroup(d) ? 'border-l-4 border-l-blue-500' : ''} ${cellStyle[status]}`}
+      className={`px-4 py-4 text-center min-w-[110px] ${startsGroup(d) ? 'border-l-4 border-l-brand-500' : ''} ${cellStyle[status]}`}
     >
       {status === 'completed' && (
         <>
@@ -123,8 +123,8 @@ function Cell({ p, index }: { p: Participant; index: number }) {
       )}
       {status === 'in-progress' && (
         <>
-          <span aria-hidden="true" className="text-3xl text-blue-400 motion-safe:animate-pulse">◉</span>
-          <div className="text-xs text-blue-400/80 font-semibold">En cours</div>
+          <span aria-hidden="true" className="text-3xl text-brand-400 motion-safe:animate-pulse">◉</span>
+          <div className="text-xs text-brand-400/80 font-semibold">En cours</div>
         </>
       )}
       {status === 'not-reached' && (
@@ -190,7 +190,7 @@ export default function Classement() {
               placeholder="Ex: Hof"
               value={q}
               onChange={e => setQ(e.target.value)}
-              className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white placeholder-gray-400"
+              className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand-500 text-white placeholder-gray-400"
             />
           </label>
         </div>
@@ -243,7 +243,7 @@ export default function Classement() {
                   <th
                     key={d.id}
                     scope="col"
-                    className={`px-4 py-3 text-center font-semibold text-sm border-b-2 border-gray-700 whitespace-nowrap min-w-[110px] ${startsGroup(d) ? 'border-l-4 border-l-blue-500' : ''}`}
+                    className={`px-4 py-3 text-center font-semibold text-sm border-b-2 border-gray-700 whitespace-nowrap min-w-[110px] ${startsGroup(d) ? 'border-l-4 border-l-brand-500' : ''}`}
                   >
                     <div className="flex flex-col items-center gap-2">
                       <img
