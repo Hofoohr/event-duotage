@@ -1,22 +1,147 @@
 [
- {"id":"reine-nyee","name":"Reine Nyée","level":105,"order":1,"iconUrl":"https://api.dofusdb.fr/img/monsters/1267.png"},
- {"id":"maitre-corbac","name":"Maître Corbac","level":105,"order":2,"iconUrl":"https://api.dofusdb.fr/img/monsters/217.png"},
- {"id":"rat-noir","name":"Rat Noir","level":105,"order":3,"iconUrl":"https://api.dofusdb.fr/img/monsters/101.png"},
- {"id":"croca","name":"Crocabulia","level":105,"order":4,"iconUrl":"https://api.dofusdb.fr/img/monsters/854.png"},
- {"id":"mansot-royal","name":"Mansot Royal","level":105,"order":5,"iconUrl":"https://api.dofusdb.fr/img/monsters/1020.png"},
- {"id":"haute-truche","name":"Haute Truche","level":105,"order":6,"iconUrl":"https://api.dofusdb.fr/img/monsters/1096.png"},
- {"id":"chene-mou","name":"Chêne Mou","level":165,"order":7,"iconUrl":"https://api.dofusdb.fr/img/monsters/148.png"},
- {"id":"sphincter-cell","name":"Sphincter Cell","level":165,"order":8,"iconUrl":"https://api.dofusdb.fr/img/monsters/676.png"},
- {"id":"hell-mina","name":"Hell Mina","level":165,"order":9,"iconUrl":"https://api.dofusdb.fr/img/monsters/1106.png"},
- {"id":"kimbo","name":"Kimbo","level":165,"order":10,"iconUrl":"https://api.dofusdb.fr/img/monsters/569.png"},
- {"id":"kanigroula","name":"Kanigroula","level":165,"order":11,"iconUrl":"https://api.dofusdb.fr/img/monsters/1066.png"},
- {"id":"koumiho","name":"Koumiho","level":165,"order":12,"iconUrl":"https://api.dofusdb.fr/img/monsters/2097.png"},
- {"id":"ombre","name":"Ombre","level":165,"order":13,"iconUrl":"https://api.dofusdb.fr/img/monsters/1002.png"},
- {"id":"bworker","name":"Bworker","level":165,"order":14,"iconUrl":"https://api.dofusdb.fr/img/monsters/267.png"},
- {"id":"danti","name":"Dantinéa","level":165,"order":15,"iconUrl":"https://api.dofusdb.fr/img/monsters/3983.png"},
- {"id":"corruption","name":"Corruption","level":165,"order":16,"iconUrl":"https://api.dofusdb.fr/img/monsters/4032.png","freeOrder":true},
- {"id":"barberyl","name":"Barbéryl","level":165,"order":17,"iconUrl":"https://api.dofusdb.fr/img/monsters/3546.png","freeOrder":true},
- {"id":"tal-kasha","name":"Tal Kasha","level":165,"order":18,"iconUrl":"https://api.dofusdb.fr/img/monsters/3224.png","freeOrder":true},
- {"id":"koutoulou","name":"Koutoulou","level":165,"order":19,"iconUrl":"https://api.dofusdb.fr/img/monsters/3299.png","freeOrder":true},
- {"id":"misere","name":"Misère","level":165,"order":20,"iconUrl":"https://api.dofusdb.fr/img/monsters/3596.png","freeOrder":true}
+ {
+  "id": "reine-nyee",
+  "name": "Reine Nyée",
+  "level": 105,
+  "order": 1,
+  "iconUrl": "boss/reine-nyee.jpg"
+ },
+ {
+  "id": "maitre-corbac",
+  "name": "Maître Corbac",
+  "level": 105,
+  "order": 2,
+  "iconUrl": "boss/maitre-corbac.jpg"
+ },
+ {
+  "id": "rat-noir",
+  "name": "Rat Noir",
+  "level": 105,
+  "order": 3,
+  "iconUrl": "boss/rat-noir.jpg"
+ },
+ {
+  "id": "croca",
+  "name": "Crocabulia",
+  "level": 105,
+  "order": 4,
+  "iconUrl": "boss/croca.png"
+ },
+ {
+  "id": "mansot-royal",
+  "name": "Mansot Royal",
+  "level": 105,
+  "order": 5,
+  "iconUrl": "boss/mansot-royal.jpg"
+ },
+ {
+  "id": "haute-truche",
+  "name": "Haute Truche",
+  "level": 105,
+  "order": 6,
+  "iconUrl": "boss/haute-truche.jpg"
+ },
+ {
+  "id": "chene-mou",
+  "name": "Chêne Mou",
+  "level": 165,
+  "order": 7,
+  "iconUrl": "boss/chene-mou.jpg"
+ },
+ {
+  "id": "sphincter-cell",
+  "name": "Sphincter Cell",
+  "level": 165,
+  "order": 8,
+  "iconUrl": "boss/sphincter-cell.jpg"
+ },
+ {
+  "id": "hell-mina",
+  "name": "Hell Mina",
+  "level": 165,
+  "order": 9,
+  "iconUrl": "boss/hell-mina.jpg"
+ },
+ {
+  "id": "kimbo",
+  "name": "Kimbo",
+  "level": 165,
+  "order": 10,
+  "iconUrl": "boss/kimbo.jpg"
+ },
+ {
+  "id": "kanigroula",
+  "name": "Kanigroula",
+  "level": 165,
+  "order": 11,
+  "iconUrl": "boss/kanigroula.jpg"
+ },
+ {
+  "id": "koumiho",
+  "name": "Koumiho",
+  "level": 165,
+  "order": 12,
+  "iconUrl": "boss/koumiho.jpg"
+ },
+ {
+  "id": "ombre",
+  "name": "Ombre",
+  "level": 165,
+  "order": 13,
+  "iconUrl": "boss/ombre.jpg"
+ },
+ {
+  "id": "bworker",
+  "name": "Bworker",
+  "level": 165,
+  "order": 14,
+  "iconUrl": "boss/bworker.jpg"
+ },
+ {
+  "id": "danti",
+  "name": "Dantinéa",
+  "level": 165,
+  "order": 15,
+  "iconUrl": "boss/danti.png"
+ },
+ {
+  "id": "corruption",
+  "name": "Corruption",
+  "level": 165,
+  "order": 16,
+  "iconUrl": "boss/corruption.jpg",
+  "freeOrder": true
+ },
+ {
+  "id": "barberyl",
+  "name": "Barbéryl",
+  "level": 165,
+  "order": 17,
+  "iconUrl": "boss/barberyl.jpg",
+  "freeOrder": true
+ },
+ {
+  "id": "tal-kasha",
+  "name": "Tal Kasha",
+  "level": 165,
+  "order": 18,
+  "iconUrl": "boss/tal-kasha.jpg",
+  "freeOrder": true
+ },
+ {
+  "id": "koutoulou",
+  "name": "Koutoulou",
+  "level": 165,
+  "order": 19,
+  "iconUrl": "boss/koutoulou.jpg",
+  "freeOrder": true
+ },
+ {
+  "id": "misere",
+  "name": "Misère",
+  "level": 165,
+  "order": 20,
+  "iconUrl": "boss/misere.jpg",
+  "freeOrder": true
+ }
 ]
