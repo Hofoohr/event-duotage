@@ -3,93 +3,75 @@
  "betDetails": [
   {
    "teamId": "team-2",
-   "amount": 6000000,
-   "tier": "low"
+   "amount": 6000000
   },
   {
    "teamId": "team-4",
-   "amount": 6000000,
-   "tier": "low"
+   "amount": 6000000
   },
   {
    "teamId": "team-12",
-   "amount": 666666,
-   "tier": "high"
+   "amount": 666666
   },
   {
    "teamId": "team-13",
-   "amount": 3700000,
-   "tier": "low"
+   "amount": 3700000
   },
   {
    "teamId": "team-7",
-   "amount": 1400000,
-   "tier": "medium"
+   "amount": 1400000
   },
   {
    "teamId": "team-3",
-   "amount": 6000000,
-   "tier": "low"
+   "amount": 6000000
   },
   {
    "teamId": "team-1",
-   "amount": 666666,
-   "tier": "high"
+   "amount": 666666
   },
   {
    "teamId": "team-5",
-   "amount": 1000000,
-   "tier": "high"
+   "amount": 1000000
   },
   {
    "teamId": "team-6",
-   "amount": 4500000,
-   "tier": "low"
+   "amount": 4500000
   },
   {
    "teamId": "team-11",
-   "amount": 500000,
-   "tier": "high"
+   "amount": 500000
   },
   {
    "teamId": "team-8",
-   "amount": 2000000,
-   "tier": "medium"
+   "amount": 2000000
   },
   {
    "teamId": "team-15",
-   "amount": 1000000,
-   "tier": "high"
+   "amount": 1000000
   },
   {
    "teamId": "team-18",
-   "amount": 1166666,
-   "tier": "high"
+   "amount": 1166666
   },
   {
    "teamId": "team-10",
-   "amount": 666666,
-   "tier": "high"
+   "amount": 666666
   },
   {
    "teamId": "team-9",
-   "amount": 666666,
-   "tier": "high"
+   "amount": 666666
   },
   {
    "teamId": "team-14",
-   "amount": 1100000,
-   "tier": "medium"
+   "amount": 1100000
   },
   {
    "teamId": "team-16",
-   "amount": 500000,
-   "tier": "high"
+   "amount": 500000
   },
   {
    "teamId": "team-17",
-   "amount": 666666,
-   "tier": "high"
+   "amount": 666666
   }
  ]
 }

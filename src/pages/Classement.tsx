@@ -1,11 +1,337 @@
-import React,{useMemo,useState} from 'react'
-import dungeonsData from '../data/dungeons.json'; import participantsData from '../data/participants.json'; import config from '../data/config.json'
-interface Dungeon{id:string;name:string;level:number;order:number;iconUrl:string;freeOrder?:boolean}
-interface Member{pseudo:string;class?:string}
-interface Participant{id:string;displayName:string;members:Member[];classes?:string[];progressStepId:string|null;status:'alive'|'dead';deathStepId:string|null;dungeonStats:{dungeonId:string;turns:number;damage:number}[];lastUpdate:string}
-const dungeons=dungeonsData as Dungeon[]; const participants=participantsData as Participant[]
-const classIcons:Record<string,string>={'Féca':'https://api.dofusdb.fr/img/breeds/symbol_1.png','Osamodas':'https://api.dofusdb.fr/img/breeds/symbol_2.png','Enutrof':'https://api.dofusdb.fr/img/breeds/symbol_3.png','Sram':'https://api.dofusdb.fr/img/breeds/symbol_4.png','Xelor':'https://api.dofusdb.fr/img/breeds/symbol_5.png','Ecaflip':'https://api.dofusdb.fr/img/breeds/symbol_6.png','Eniripsa':'https://api.dofusdb.fr/img/breeds/symbol_7.png','Iop':'https://api.dofusdb.fr/img/breeds/symbol_8.png','Crâ':'https://api.dofusdb.fr/img/breeds/symbol_9.png','Sadida':'https://api.dofusdb.fr/img/breeds/symbol_10.png','Sacrieur':'https://api.dofusdb.fr/img/breeds/symbol_11.png','Pandawa':'https://api.dofusdb.fr/img/breeds/symbol_12.png','Roublard':'https://api.dofusdb.fr/img/breeds/symbol_13.png','Zobal':'https://api.dofusdb.fr/img/breeds/symbol_14.png','Steameur':'https://api.dofusdb.fr/img/breeds/symbol_15.png','Eliotrope':'https://api.dofusdb.fr/img/breeds/symbol_16.png','Huppermage':'https://api.dofusdb.fr/img/breeds/symbol_17.png','Ouginak':'https://api.dofusdb.fr/img/breeds/symbol_18.png','Forgelance':'https://api.dofusdb.fr/img/breeds/symbol_20.png'}
-function progress(p:Participant){if(!p.progressStepId)return 0;const d=dungeons.find(x=>x.id===p.progressStepId);if(!d)return 0;return d.order}
-function Classement(){const [q,setQ]=useState('');const [expanded,setExpanded]=useState<Set<string>>(new Set());const sorted=useMemo(()=>[...participants].sort((a,b)=>progress(b)-progress(a)),[]);const filtered=sorted.filter(p=>!q.trim()||p.displayName.toLowerCase().includes(q.toLowerCase())||p.members.some(m=>m.pseudo.toLowerCase().includes(q.toLowerCase())));const date=new Intl.DateTimeFormat('fr-FR',{day:'2-digit',month:'long',year:'numeric',hour:'2-digit',minute:'2-digit'}).format(new Date(config.lastRankingUpdate));
-return <div className="min-h-screen"><div className="relative bg-gradient-to-b from-gray-900/95 to-gray-950 overflow-hidden"><div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1511512578047-dfb367046420?w=1920')] bg-cover bg-center opacity-10 blur-sm"/><div className="relative container mx-auto px-6 py-24"><p className="text-blue-400 font-semibold mb-4 text-sm uppercase tracking-wider">DOFUS - EVENT DUOTAGE GÉNÉRATION MIRACLE</p><h1 className="text-6xl md:text-7xl font-black mb-4 text-white">Classement des survivants</h1><p className="text-xl text-gray-400 mb-8 max-w-3xl">Suivez la progression des équipes. Chaque mort lors d'un duotage fige définitivement le parcours au combat atteint.</p><div className="flex flex-wrap gap-6 items-center"><div className="bg-gray-800/60 backdrop-blur-sm rounded-lg px-6 py-4 border border-gray-700"><p className="text-sm text-gray-400 mb-1">Classement actuel</p><p className="text-lg font-bold text-white">{date}</p></div><div className="bg-gray-800/60 backdrop-blur-sm rounded-lg px-6 py-4 border border-gray-700"><p className="text-sm text-gray-400 mb-1">Épreuve</p><p className="text-lg font-bold text-white">105 → 165</p></div><div className="bg-gradient-to-r from-yellow-900/30 to-amber-900/30 backdrop-blur-sm rounded-lg px-6 py-4 border border-yellow-600/30"><p className="text-sm text-yellow-300 mb-1">Cashprize actuel</p><p className="text-lg font-bold text-yellow-300">≈ {config.cashPrizeMin} – {config.cashPrizeMax} M kamas</p></div></div></div></div><div className="container mx-auto px-6 py-12"><div className="mb-8 flex justify-end"><input type="text" placeholder="Ex: Hof" value={q} onChange={e=>setQ(e.target.value)} className="bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 w-64 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white placeholder-gray-500"/></div><div className="overflow-x-auto"><table className="w-full border-collapse"><thead><tr className="bg-gray-800/50"><th className="sticky left-0 z-20 bg-gray-800/95 backdrop-blur-sm px-4 py-3 text-left font-bold text-white border-b-2 border-gray-700"># / Team</th>{dungeons.map((d,i)=><th key={d.id} className={`px-6 py-3 text-center font-semibold text-sm border-b-2 border-gray-700 whitespace-nowrap min-w-[120px] ${i===6||i===15?'border-l-4 border-l-blue-500':''}`}><div className="flex flex-col items-center gap-2"><img src={import.meta.env.BASE_URL+d.iconUrl} onError={e=>{e.currentTarget.style.visibility='hidden'}} alt={d.name} className="w-12 h-12 object-contain"/><span className="text-xs text-gray-300">{d.name}</span><span className="text-xs text-gray-500">Niv. {d.level}{d.freeOrder?' • ordre libre':''}</span></div></th>)}</tr></thead><tbody>{filtered.map((p,i)=>{const isExp=expanded.has(p.id);return <React.Fragment key={p.id}><tr className="border-b border-gray-800 hover:bg-gray-800/30"><td className="sticky left-0 z-10 bg-gray-900/95 backdrop-blur-sm px-4 py-4 border-r border-gray-800"><div className="flex items-start gap-3"><span className="text-2xl font-bold text-gray-500 min-w-[2rem]">{i+1}</span><div><button onClick={()=>setExpanded(s=>{const n=new Set(s);n.has(p.id)?n.delete(p.id):n.add(p.id);return n})} className="font-bold text-white mb-2 hover:text-blue-400 transition-colors text-left flex items-center gap-2">{p.displayName}<span className="text-xs text-gray-500">{isExp?'▼':'▶'}</span></button><div className="flex flex-wrap gap-1 mb-2">{p.members.map(m=><div key={m.pseudo} className="flex items-center gap-1 px-2 py-1 rounded bg-blue-600/20 border border-blue-600/30"><span className="text-xs text-blue-300">{m.pseudo}{m.class?` • ${m.class}`:''}</span></div>)}{(p.classes||[]).map(c=><div key={c} className="flex items-center gap-1 px-2 py-1 rounded bg-gray-700/40 border border-gray-600/40" title={c}>{classIcons[c]&&<img src={classIcons[c]} alt={c} className="w-4 h-4 object-contain"/>}<span className="text-xs text-gray-300">{c}</span></div>)}</div><p className="text-sm text-gray-400">{Math.floor(progress(p))}/{dungeons.length} combats validés</p>{p.status==='alive'?<p className="text-sm text-green-400 font-semibold">✓ Toujours en vie</p>:<p className="text-sm text-red-400 font-semibold">✕ Mort face à {dungeons.find(d=>d.id===p.deathStepId)?.name||'un combat'}</p>}</div></div></td>{dungeons.map((d,idx)=>{const cur=progress(p);const status=cur>d.order?'completed':cur===d.order?(p.status==='dead'&&p.deathStepId===d.id?'death':'in-progress'):'not-reached';return <td key={d.id} className={`px-6 py-4 text-center min-w-[120px] ${idx===6||idx===15?'border-l-4 border-l-blue-500':''} ${status==='completed'?'bg-green-900/40':status==='death'?'bg-red-900/50':status==='in-progress'?'bg-blue-900/40':'bg-gray-800/20 text-gray-600'}`}>{status==='completed'&&<div><span className="text-3xl text-green-400">✓</span><div className="text-xs text-green-400/80 font-semibold">Validé</div></div>}{status==='death'&&<div><span className="text-3xl text-red-400">☠</span><div className="text-xs text-red-400/80 font-semibold">Mort</div></div>}{status==='in-progress'&&<div><span className="text-3xl text-blue-400 animate-pulse">◉</span><div className="text-xs text-blue-400/80 font-semibold">En cours</div></div>}{status==='not-reached'&&<span className="text-xl text-gray-700">-</span>}</td>})}</tr>{isExp&&p.dungeonStats.length>0&&<tr className="bg-gray-800/50"><td className="sticky left-0 z-10 bg-gray-800/90 px-4 py-3 text-xs text-gray-400">Tours / Dégâts</td>{dungeons.map(d=>{const s=p.dungeonStats.find(x=>x.dungeonId===d.id);return <td key={d.id} className="px-6 py-3 text-center text-xs text-white">{s?<>{s.turns}<br/>{s.damage.toLocaleString()}</>:<span className="text-gray-600">-</span>}</td>})}</tr>}</React.Fragment>})}</tbody></table></div>{filtered.length===0&&<div className="text-center py-12 text-gray-500">Aucun participant enregistré pour le moment.</div>}</div></div>}
-export default Classement
+import React, { useMemo, useState } from 'react'
+import Hero from '../components/Hero'
+import config from '../data/config.json'
+import { classIcon } from '../lib/classes'
+import {
+  cellStatus,
+  dungeons,
+  formatDate,
+  levelRange,
+  matchesQuery,
+  participants,
+  rankTeams,
+  startsGroup,
+  validatedCount,
+  type CellStatus,
+  type Participant,
+} from '../lib/tournament'
+
+const cellStyle: Record<CellStatus, string> = {
+  completed: 'bg-green-900/40',
+  death: 'bg-red-900/50',
+  'in-progress': 'bg-blue-900/40',
+  'not-reached': 'bg-gray-800/20',
+}
+
+const segmentStyle: Record<CellStatus, string> = {
+  completed: 'bg-green-500',
+  death: 'bg-red-500',
+  'in-progress': 'bg-blue-500 motion-safe:animate-pulse',
+  'not-reached': 'bg-gray-700',
+}
+
+const statusLabel: Record<CellStatus, string> = {
+  completed: 'Validé',
+  death: 'Mort',
+  'in-progress': 'En cours',
+  'not-reached': 'Non atteint',
+}
+
+function Status({ p }: { p: Participant }) {
+  if (p.status === 'alive') return <p className="text-sm text-green-400 font-semibold">✓ Toujours en vie</p>
+  const name = dungeons.find(d => d.id === p.deathStepId)?.name
+  return <p className="text-sm text-red-400 font-semibold">✕ Mort face à {name || 'un combat'}</p>
+}
+
+function Chips({ p }: { p: Participant }) {
+  return (
+    <div className="flex flex-wrap gap-1 mb-2">
+      {p.members.map(m => (
+        <span
+          key={m.pseudo}
+          className="px-2 py-1 rounded bg-blue-600/20 border border-blue-600/30 text-xs text-blue-300"
+        >
+          {m.pseudo}
+          {m.class ? ` • ${m.class}` : ''}
+        </span>
+      ))}
+      {(p.classes ?? []).map(c => {
+        const icon = classIcon(c)
+        return (
+          <span
+            key={c}
+            className="flex items-center gap-1 px-2 py-1 rounded bg-gray-700/40 border border-gray-600/40 text-xs text-gray-300"
+          >
+            {icon && <img src={icon} alt="" width={16} height={16} loading="lazy" className="w-4 h-4 object-contain" />}
+            {c}
+          </span>
+        )
+      })}
+    </div>
+  )
+}
+
+function TeamName({ p, open, toggle }: { p: Participant; open: boolean; toggle: () => void }) {
+  if (p.dungeonStats.length === 0) return <span className="block font-bold text-white mb-2">{p.displayName}</span>
+  return (
+    <button
+      type="button"
+      onClick={toggle}
+      aria-expanded={open}
+      className="font-bold text-white mb-2 hover:text-blue-400 transition-colors text-left flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded"
+    >
+      {p.displayName}
+      <span aria-hidden="true" className="text-xs text-gray-500">
+        {open ? '▼' : '▶'}
+      </span>
+    </button>
+  )
+}
+
+function Stats({ p }: { p: Participant }) {
+  return (
+    <dl className="mt-3 grid grid-cols-[1fr_auto_auto] gap-x-4 gap-y-1 text-xs text-gray-300">
+      {p.dungeonStats.map(s => (
+        <React.Fragment key={s.dungeonId}>
+          <dt>{dungeons.find(d => d.id === s.dungeonId)?.name ?? s.dungeonId}</dt>
+          <dd>{s.turns} tours</dd>
+          <dd>{s.damage.toLocaleString('fr-FR')} dégâts</dd>
+        </React.Fragment>
+      ))}
+    </dl>
+  )
+}
+
+function Cell({ p, index }: { p: Participant; index: number }) {
+  const d = dungeons[index]
+  const status = cellStatus(p, d)
+  return (
+    <td
+      className={`px-4 py-4 text-center min-w-[110px] ${startsGroup(d) ? 'border-l-4 border-l-blue-500' : ''} ${cellStyle[status]}`}
+    >
+      {status === 'completed' && (
+        <>
+          <span aria-hidden="true" className="text-3xl text-green-400">✓</span>
+          <div className="text-xs text-green-400/80 font-semibold">Validé</div>
+        </>
+      )}
+      {status === 'death' && (
+        <>
+          <span aria-hidden="true" className="text-3xl text-red-400">☠</span>
+          <div className="text-xs text-red-400/80 font-semibold">Mort</div>
+        </>
+      )}
+      {status === 'in-progress' && (
+        <>
+          <span aria-hidden="true" className="text-3xl text-blue-400 motion-safe:animate-pulse">◉</span>
+          <div className="text-xs text-blue-400/80 font-semibold">En cours</div>
+        </>
+      )}
+      {status === 'not-reached' && (
+        <>
+          <span aria-hidden="true" className="text-xl text-gray-500">-</span>
+          <span className="sr-only">{statusLabel[status]}</span>
+        </>
+      )}
+    </td>
+  )
+}
+
+export default function Classement() {
+  const [q, setQ] = useState('')
+  const [expanded, setExpanded] = useState<Set<string>>(new Set())
+  // Ranks are computed on the whole field, so filtering never changes a team's position.
+  const ranked = useMemo(() => rankTeams(participants), [])
+  const rows = ranked.filter(r => matchesQuery(r.team, q))
+  const toggle = (id: string) =>
+    setExpanded(s => {
+      const n = new Set(s)
+      if (!n.delete(id)) n.add(id)
+      return n
+    })
+  const date = formatDate(config.lastRankingUpdate, {
+    day: '2-digit',
+    month: 'long',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  })
+
+  return (
+    <div className="min-h-screen">
+      <Hero
+        title="Classement des survivants"
+        subtitle="Suivez la progression des équipes. Chaque mort lors d'un duotage fige définitivement le parcours au combat atteint."
+      >
+        <div className="flex flex-wrap gap-4 sm:gap-6 items-center">
+          <div className="bg-gray-800/60 backdrop-blur-sm rounded-lg px-6 py-4 border border-gray-700">
+            <p className="text-sm text-gray-400 mb-1">Classement actuel</p>
+            <p className="text-lg font-bold text-white">{date}</p>
+          </div>
+          <div className="bg-gray-800/60 backdrop-blur-sm rounded-lg px-6 py-4 border border-gray-700">
+            <p className="text-sm text-gray-400 mb-1">Épreuve</p>
+            <p className="text-lg font-bold text-white">{levelRange}</p>
+          </div>
+          <div className="bg-gradient-to-r from-yellow-900/30 to-amber-900/30 backdrop-blur-sm rounded-lg px-6 py-4 border border-yellow-600/30">
+            <p className="text-sm text-yellow-300 mb-1">Cashprize actuel</p>
+            <p className="text-lg font-bold text-yellow-300">
+              ≈ {config.cashPrizeMin} – {config.cashPrizeMax} M kamas
+            </p>
+          </div>
+        </div>
+      </Hero>
+
+      <section className="container mx-auto px-4 sm:px-6 py-12">
+        <div className="mb-8 flex justify-end">
+          <label className="w-full sm:w-64">
+            <span className="sr-only">Rechercher une équipe, un joueur ou une classe</span>
+            <input
+              type="search"
+              placeholder="Ex: Hof"
+              value={q}
+              onChange={e => setQ(e.target.value)}
+              className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 text-white placeholder-gray-400"
+            />
+          </label>
+        </div>
+
+        {/* Mobile: one card per team */}
+        <ol className="md:hidden space-y-4">
+          {rows.map(({ team: p, rank }) => {
+            const open = expanded.has(p.id)
+            return (
+              <li key={p.id} className="rounded-lg border border-gray-800 bg-gray-900/60 p-4">
+                <div className="flex items-start gap-3">
+                  <span className="text-2xl font-bold text-gray-400 min-w-[2rem]">{rank}</span>
+                  <div className="min-w-0 flex-1">
+                    <TeamName p={p} open={open} toggle={() => toggle(p.id)} />
+                    <Chips p={p} />
+                    <p className="text-sm text-gray-400">
+                      {validatedCount(p)}/{dungeons.length} combats validés
+                    </p>
+                    <Status p={p} />
+                    <div className="mt-3 flex gap-0.5" role="img" aria-label={`${validatedCount(p)} combats validés sur ${dungeons.length}`}>
+                      {dungeons.map(d => (
+                        <span
+                          key={d.id}
+                          title={`${d.name} — ${statusLabel[cellStatus(p, d)]}`}
+                          className={`h-2 flex-1 rounded-sm ${segmentStyle[cellStatus(p, d)]}`}
+                        />
+                      ))}
+                    </div>
+                    {open && <Stats p={p} />}
+                  </div>
+                </div>
+              </li>
+            )
+          })}
+        </ol>
+
+        {/* Desktop: full table */}
+        <div className="relative hidden md:block overflow-x-auto">
+          <table className="w-full border-collapse">
+            <caption className="sr-only">Progression des équipes combat par combat</caption>
+            <thead>
+              <tr className="bg-gray-800/50">
+                <th
+                  scope="col"
+                  className="sticky left-0 z-20 bg-gray-800 px-4 py-3 text-left font-bold text-white border-b-2 border-gray-700 min-w-[240px]"
+                >
+                  # / Team
+                </th>
+                {dungeons.map(d => (
+                  <th
+                    key={d.id}
+                    scope="col"
+                    className={`px-4 py-3 text-center font-semibold text-sm border-b-2 border-gray-700 whitespace-nowrap min-w-[110px] ${startsGroup(d) ? 'border-l-4 border-l-blue-500' : ''}`}
+                  >
+                    <div className="flex flex-col items-center gap-2">
+                      <img
+                        src={import.meta.env.BASE_URL + d.iconUrl}
+                        onError={e => {
+                          e.currentTarget.style.visibility = 'hidden'
+                        }}
+                        alt=""
+                        width={48}
+                        height={48}
+                        loading="lazy"
+                        className="w-12 h-12 object-contain"
+                      />
+                      <span className="text-xs text-gray-300">{d.name}</span>
+                      <span className="text-xs text-gray-400">
+                        Niv. {d.level}
+                        {d.freeOrder ? ' • ordre libre' : ''}
+                      </span>
+                    </div>
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map(({ team: p, rank }) => {
+                const open = expanded.has(p.id)
+                return (
+                  <React.Fragment key={p.id}>
+                    <tr className="border-b border-gray-800 hover:bg-gray-800/30">
+                      <th
+                        scope="row"
+                        className="sticky left-0 z-10 bg-gray-900 px-4 py-4 border-r border-gray-800 text-left font-normal"
+                      >
+                        <div className="flex items-start gap-3">
+                          <span className="text-2xl font-bold text-gray-400 min-w-[2rem]">{rank}</span>
+                          <div>
+                            <TeamName p={p} open={open} toggle={() => toggle(p.id)} />
+                            <Chips p={p} />
+                            <p className="text-sm text-gray-400">
+                              {validatedCount(p)}/{dungeons.length} combats validés
+                            </p>
+                            <Status p={p} />
+                          </div>
+                        </div>
+                      </th>
+                      {dungeons.map((d, i) => (
+                        <Cell key={d.id} p={p} index={i} />
+                      ))}
+                    </tr>
+                    {open && p.dungeonStats.length > 0 && (
+                      <tr className="bg-gray-800/50">
+                        <th
+                          scope="row"
+                          className="sticky left-0 z-10 bg-gray-800 px-4 py-3 text-left text-xs font-normal text-gray-400"
+                        >
+                          Tours / Dégâts
+                        </th>
+                        {dungeons.map(d => {
+                          const s = p.dungeonStats.find(x => x.dungeonId === d.id)
+                          return (
+                            <td key={d.id} className="px-4 py-3 text-center text-xs text-white">
+                              {s ? (
+                                <>
+                                  {s.turns}
+                                  <br />
+                                  {s.damage.toLocaleString('fr-FR')}
+                                </>
+                              ) : (
+                                <span className="text-gray-500">-</span>
+                              )}
+                            </td>
+                          )
+                        })}
+                      </tr>
+                    )}
+                  </React.Fragment>
+                )
+              })}
+            </tbody>
+          </table>
+        </div>
+
+        {rows.length === 0 && (
+          <div className="text-center py-12 text-gray-400">
+            {q.trim() ? 'Aucune équipe ne correspond à votre recherche.' : 'Aucun participant enregistré pour le moment.'}
+          </div>
+        )}
+      </section>
+    </div>
+  )
+}
