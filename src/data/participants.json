@@ -4,13 +4,15 @@
   "displayName": "Boune & Tsuu",
   "members": [
    {
-    "pseudo": "Boune",
-    "class": "Eliotrope"
+    "pseudo": "Boune"
    },
    {
-    "pseudo": "Tsuu",
-    "class": "Sacrieur"
+    "pseudo": "Tsuu"
    }
+  ],
+  "classes": [
+   "Eliotrope",
+   "Sacrieur"
   ],
   "progressStepId": "reine-nyee",
   "status": "alive",
@@ -23,13 +25,15 @@
   "displayName": "Oms & Cae",
   "members": [
    {
-    "pseudo": "Oms",
-    "class": "Eniripsa"
+    "pseudo": "Oms"
    },
    {
-    "pseudo": "Cae",
-    "class": "Sadida"
+    "pseudo": "Cae"
    }
+  ],
+  "classes": [
+   "Eniripsa",
+   "Sadida"
   ],
   "progressStepId": "reine-nyee",
   "status": "alive",
@@ -42,13 +46,15 @@
   "displayName": "Hof & Nordes",
   "members": [
    {
-    "pseudo": "Hof",
-    "class": "Zobal"
+    "pseudo": "Hof"
    },
    {
-    "pseudo": "Nordes",
-    "class": "Forgelance"
+    "pseudo": "Nordes"
    }
+  ],
+  "classes": [
+   "Zobal",
+   "Forgelance"
   ],
   "progressStepId": "reine-nyee",
   "status": "alive",
@@ -58,16 +64,18 @@
  },
  {
   "id": "team-4",
-  "displayName": "Boomie & Vina",
+  "displayName": "Boomie avec un e & Vina",
   "members": [
    {
-    "pseudo": "Boomie",
-    "class": "Pandawa"
+    "pseudo": "Boomie avec un e"
    },
    {
-    "pseudo": "Vina",
-    "class": "Xelor"
+    "pseudo": "Vina"
    }
+  ],
+  "classes": [
+   "Pandawa",
+   "Xelor"
   ],
   "progressStepId": "reine-nyee",
   "status": "alive",
@@ -80,13 +88,15 @@
   "displayName": "Cactus & Tauxic",
   "members": [
    {
-    "pseudo": "Cactus",
-    "class": "Roublard"
+    "pseudo": "Cactus"
    },
    {
-    "pseudo": "Tauxic",
-    "class": "Sadida"
+    "pseudo": "Tauxic"
    }
+  ],
+  "classes": [
+   "Roublard",
+   "Sadida"
   ],
   "progressStepId": "reine-nyee",
   "status": "alive",
@@ -99,13 +109,15 @@
   "displayName": "Rata & Poh",
   "members": [
    {
-    "pseudo": "Rata",
-    "class": "Sadida"
+    "pseudo": "Rata"
    },
    {
-    "pseudo": "Poh",
-    "class": "Huppermage"
+    "pseudo": "Poh"
    }
+  ],
+  "classes": [
+   "Sadida",
+   "Huppermage"
   ],
   "progressStepId": "reine-nyee",
   "status": "alive",
@@ -118,13 +130,15 @@
   "displayName": "Aizen & Ez",
   "members": [
    {
-    "pseudo": "Aizen",
-    "class": "Roublard"
+    "pseudo": "Aizen"
    },
    {
-    "pseudo": "Ez",
-    "class": "Forgelance"
+    "pseudo": "Ez"
    }
+  ],
+  "classes": [
+   "Roublard",
+   "Forgelance"
   ],
   "progressStepId": "reine-nyee",
   "status": "alive",
@@ -137,13 +151,15 @@
   "displayName": "Sora & Bhalzo",
   "members": [
    {
-    "pseudo": "Sora",
-    "class": "Enutrof"
+    "pseudo": "Sora"
    },
    {
-    "pseudo": "Bhalzo",
-    "class": "Xelor"
+    "pseudo": "Bhalzo"
    }
+  ],
+  "classes": [
+   "Enutrof",
+   "Xelor"
   ],
   "progressStepId": "reine-nyee",
   "status": "alive",
@@ -156,13 +172,12 @@
   "displayName": "Le Chut",
   "members": [
    {
-    "pseudo": "Le Chut",
-    "class": "Sram"
-   },
-   {
-    "pseudo": "Le Chut",
-    "class": "Steameur"
+    "pseudo": "Le Chut"
    }
+  ],
+  "classes": [
+   "Sram",
+   "Steameur"
   ],
   "progressStepId": "reine-nyee",
   "status": "alive",
@@ -175,13 +190,12 @@
   "displayName": "Fourmi",
   "members": [
    {
-    "pseudo": "Fourmi",
-    "class": "Ouginak"
-   },
-   {
-    "pseudo": "Fourmi",
-    "class": "Ecaflip"
+    "pseudo": "Fourmi"
    }
+  ],
+  "classes": [
+   "Ouginak",
+   "Ecaflip"
   ],
   "progressStepId": "reine-nyee",
   "status": "alive",
@@ -194,13 +208,15 @@
   "displayName": "Cha & Norman",
   "members": [
    {
-    "pseudo": "Cha",
-    "class": "Ecaflip"
+    "pseudo": "Cha"
    },
    {
-    "pseudo": "Norman",
-    "class": "Eliotrope"
+    "pseudo": "Norman"
    }
+  ],
+  "classes": [
+   "Ecaflip",
+   "Eliotrope"
   ],
   "progressStepId": "reine-nyee",
   "status": "alive",
@@ -213,13 +229,15 @@
   "displayName": "Farkas & Toums",
   "members": [
    {
-    "pseudo": "Farkas",
-    "class": "Xelor"
+    "pseudo": "Farkas"
    },
    {
-    "pseudo": "Toums",
-    "class": "Iop"
+    "pseudo": "Toums"
    }
+  ],
+  "classes": [
+   "Xelor",
+   "Iop"
   ],
   "progressStepId": "reine-nyee",
   "status": "alive",
@@ -232,13 +250,15 @@
   "displayName": "Murgia & Spyri",
   "members": [
    {
-    "pseudo": "Murgia",
-    "class": "Crâ"
+    "pseudo": "Murgia"
    },
    {
-    "pseudo": "Spyri",
-    "class": "Sacrieur"
+    "pseudo": "Spyri"
    }
+  ],
+  "classes": [
+   "Crâ",
+   "Sacrieur"
   ],
   "progressStepId": "reine-nyee",
   "status": "alive",
@@ -251,13 +271,12 @@
   "displayName": "Sedgyfergo",
   "members": [
    {
-    "pseudo": "Sedgyfergo",
-    "class": "Xelor"
-   },
-   {
-    "pseudo": "Sedgyfergo",
-    "class": "Huppermage"
+    "pseudo": "Sedgyfergo"
    }
+  ],
+  "classes": [
+   "Xelor",
+   "Huppermage"
   ],
   "progressStepId": "reine-nyee",
   "status": "alive",
@@ -270,13 +289,15 @@
   "displayName": "Specymen & Yogi",
   "members": [
    {
-    "pseudo": "Specymen",
-    "class": "Enutrof"
+    "pseudo": "Specymen"
    },
    {
-    "pseudo": "Yogi",
-    "class": "Huppermage"
+    "pseudo": "Yogi"
    }
+  ],
+  "classes": [
+   "Enutrof",
+   "Huppermage"
   ],
   "progressStepId": "reine-nyee",
   "status": "alive",
@@ -289,13 +310,12 @@
   "displayName": "Genessis",
   "members": [
    {
-    "pseudo": "Genessis",
-    "class": "Xelor"
-   },
-   {
-    "pseudo": "Genessis",
-    "class": "Forgelance"
+    "pseudo": "Genessis"
    }
+  ],
+  "classes": [
+   "Xelor",
+   "Forgelance"
   ],
   "progressStepId": "reine-nyee",
   "status": "alive",
@@ -308,13 +328,12 @@
   "displayName": "Goldencookie",
   "members": [
    {
-    "pseudo": "Goldencookie",
-    "class": "Ouginak"
-   },
-   {
-    "pseudo": "Goldencookie",
-    "class": "Enutrof"
+    "pseudo": "Goldencookie"
    }
+  ],
+  "classes": [
+   "Ouginak",
+   "Enutrof"
   ],
   "progressStepId": "reine-nyee",
   "status": "alive",
