@@ -1,1 +1,95 @@
-{"totalPot":0,"currentOdds":[],"betDetails":[]}
+{
+ "totalPot": 38199996,
+ "betDetails": [
+  {
+   "teamId": "team-2",
+   "amount": 6000000,
+   "tier": "low"
+  },
+  {
+   "teamId": "team-4",
+   "amount": 6000000,
+   "tier": "low"
+  },
+  {
+   "teamId": "team-12",
+   "amount": 666666,
+   "tier": "high"
+  },
+  {
+   "teamId": "team-13",
+   "amount": 3700000,
+   "tier": "low"
+  },
+  {
+   "teamId": "team-7",
+   "amount": 1400000,
+   "tier": "medium"
+  },
+  {
+   "teamId": "team-3",
+   "amount": 6000000,
+   "tier": "low"
+  },
+  {
+   "teamId": "team-1",
+   "amount": 666666,
+   "tier": "high"
+  },
+  {
+   "teamId": "team-5",
+   "amount": 1000000,
+   "tier": "high"
+  },
+  {
+   "teamId": "team-6",
+   "amount": 4500000,
+   "tier": "low"
+  },
+  {
+   "teamId": "team-11",
+   "amount": 500000,
+   "tier": "high"
+  },
+  {
+   "teamId": "team-8",
+   "amount": 2000000,
+   "tier": "medium"
+  },
+  {
+   "teamId": "team-15",
+   "amount": 1000000,
+   "tier": "high"
+  },
+  {
+   "teamId": "team-18",
+   "amount": 1166666,
+   "tier": "high"
+  },
+  {
+   "teamId": "team-10",
+   "amount": 666666,
+   "tier": "high"
+  },
+  {
+   "teamId": "team-9",
+   "amount": 666666,
+   "tier": "high"
+  },
+  {
+   "teamId": "team-14",
+   "amount": 1100000,
+   "tier": "medium"
+  },
+  {
+   "teamId": "team-16",
+   "amount": 500000,
+   "tier": "high"
+  },
+  {
+   "teamId": "team-17",
+   "amount": 666666,
+   "tier": "high"
+  }
+ ]
+}
