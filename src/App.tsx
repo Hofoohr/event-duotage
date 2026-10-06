@@ -17,7 +17,7 @@ function Logo() {
       aria-label="Génération Miracle — accueil"
       className="absolute top-4 left-4 sm:top-6 sm:left-8 z-10 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-400"
     >
-      <img src={`${import.meta.env.BASE_URL}logo.svg`} alt="" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12" />
+      <img src={`${import.meta.env.BASE_URL}logo.png`} alt="" width={48} height={48} className="w-10 h-10 sm:w-12 sm:h-12" />
     </NavLink>
   )
 }
