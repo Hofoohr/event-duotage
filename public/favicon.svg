@@ -1,10 +1,36 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Génération Miracle">
-  <polygon points="50.0,1.0 63.0,18.6 84.6,15.4 81.4,37.0 99.0,50.0 81.4,63.0 84.6,84.6 63.0,81.4 50.0,99.0 37.0,81.4 15.4,84.6 18.6,63.0 1.0,50.0 18.6,37.0 15.4,15.4 37.0,18.6" fill="#c9ced4"/>
-  <polygon points="50.0,7.0 61.3,22.7 80.4,19.6 77.3,38.7 93.0,50.0 77.3,61.3 80.4,80.4 61.3,77.3 50.0,93.0 38.7,77.3 19.6,80.4 22.7,61.3 7.0,50.0 22.7,38.7 19.6,19.6 38.7,22.7" fill="#1fbfae"/>
-  <g fill="#4d5666">
-    <path d="M28 27l6-3 24 26-4 5zM72 27l-6-3-24 26 4 5z"/>
-    <path d="M50 44c-10 0-17 5-17 5v14c0 8 9 14 17 17 8-3 17-9 17-17V49s-7-5-17-5z" fill="none" stroke="#4d5666" stroke-width="3"/>
-    <path d="M50 46c-7 0-12 4-12 10 0 4 2 6 4 8v5h16v-5c2-2 4-4 4-8 0-6-5-10-12-10z"/>
+  <defs>
+    <linearGradient id="gm-rim" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef0f2"/><stop offset=".5" stop-color="#b4bac1"/><stop offset="1" stop-color="#7d848d"/>
+    </linearGradient>
+    <linearGradient id="gm-teal" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#22cdbb"/><stop offset="1" stop-color="#17ad9f"/>
+    </linearGradient>
+    <clipPath id="gm-face"><polygon points="50.00,6.50 62.74,19.24 80.76,19.24 80.76,37.26 93.50,50.00 80.76,62.74 80.76,80.76 62.74,80.76 50.00,93.50 37.26,80.76 19.24,80.76 19.24,62.74 6.50,50.00 19.24,37.26 19.24,19.24 37.26,19.24"/></clipPath>
+    <g id="gm-sword" fill="#4f5967">
+      <path d="M50 12l4.2 7.500-.8 29.500h-6.800l-.8-29.500z"/>
+      <rect x="49" y="48" width="2" height="44" rx="1"/>
+      <rect x="44" y="47" width="12" height="2.4" rx="1.2"/>
+    </g>
+  </defs>
+  <polygon points="50.00,1.00 64.35,15.35 84.65,15.35 84.65,35.65 99.00,50.00 84.65,64.35 84.65,84.65 64.35,84.65 50.00,99.00 35.65,84.65 15.35,84.65 15.35,64.35 1.00,50.00 15.35,35.65 15.35,15.35 35.65,15.35" fill="url(#gm-rim)" stroke="#5b626b" stroke-width=".8" stroke-linejoin="round"/>
+  <polygon points="50.00,6.50 62.74,19.24 80.76,19.24 80.76,37.26 93.50,50.00 80.76,62.74 80.76,80.76 62.74,80.76 50.00,93.50 37.26,80.76 19.24,80.76 19.24,62.74 6.50,50.00 19.24,37.26 19.24,19.24 37.26,19.24" fill="url(#gm-teal)"/>
+  <g clip-path="url(#gm-face)" opacity=".5">
+    <polygon points="50,50 100,100 100,38 62,0 100,0" fill="#10a092" opacity=".0"/>
+    <polygon points="50,50 0,100 100,100 100,50" fill="#139e91" opacity=".35"/>
+    <polygon points="50,50 0,0 50,0" fill="#5be6d6" opacity=".35"/>
+    <polygon points="50,50 0,0 0,50" fill="#5be6d6" opacity=".2"/>
   </g>
-  <g fill="#1fbfae"><circle cx="45" cy="56" r="2.6"/><circle cx="55" cy="56" r="2.6"/></g>
+  <use href="#gm-sword" transform="rotate(-40 50 55)"/>
+  <use href="#gm-sword" transform="rotate(40 50 55)"/>
+  <path d="M50 41l7 3.2 18 .8-5 5.5-.5 13c-.6 9-8.500 15.500-19.500 19.500-11-4-18.900-10.500-19.500-19.500l-.5-13-5-5.500 18-.8z"
+        fill="#1fbfae" stroke="#4f5967" stroke-width="2" stroke-linejoin="round"/>
+  <g fill="#4f5967">
+    <path d="M50 42c-7.500 0-12.500 4.800-12.500 11 0 3.500 1.800 6 4 7.600V69h17.000v-8.400c2.200-1.600 4-4.100 4-7.600 0-6.200-5-11-12.500-11z"/>
+  </g>
+  <g fill="#1fbfae">
+    <ellipse cx="45" cy="54" rx="3.200" ry="3.500"/><ellipse cx="55" cy="54" rx="3.200" ry="3.500"/>
+    <path d="M50 58.500l-2 3.800h4z"/>
+    <rect x="44" y="64.500" width="2" height="4"/><rect x="48" y="64.500" width="2" height="4"/><rect x="52" y="64.500" width="2" height="4"/><rect x="56" y="64.500" width="1.600" height="4"/>
+  </g>
 </svg>
