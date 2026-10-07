@@ -260,11 +260,11 @@
    "Crâ",
    "Sacrieur"
   ],
-  "progressStepId": "mansot-royal",
+  "progressStepId": "chene-mou",
   "status": "alive",
   "deathStepId": null,
   "dungeonStats": [],
-  "lastUpdate": "2026-10-07T19:23:18+02:00"
+  "lastUpdate": "2026-10-07T22:58:27+02:00"
  },
  {
   "id": "team-14",
@@ -317,11 +317,11 @@
    "Xelor",
    "Forgelance"
   ],
-  "progressStepId": "croca",
+  "progressStepId": "mansot-royal",
   "status": "alive",
   "deathStepId": null,
   "dungeonStats": [],
-  "lastUpdate": "2026-10-07T01:26:48+02:00"
+  "lastUpdate": "2026-10-07T22:58:27+02:00"
  },
  {
   "id": "team-17",
