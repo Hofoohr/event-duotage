@@ -1,13 +1,13 @@
 [
  {
   "id": "team-1",
-  "displayName": "Boune & Tsuu",
+  "displayName": "Boune & Tsoo",
   "members": [
    {
     "pseudo": "Boune"
    },
    {
-    "pseudo": "Tsuu"
+    "pseudo": "Tsoo"
    }
   ],
   "classes": [
@@ -18,7 +18,7 @@
   "status": "alive",
   "deathStepId": null,
   "dungeonStats": [],
-  "lastUpdate": "2026-10-06T15:55:46+02:00"
+  "lastUpdate": "2026-10-08T17:08:26+02:00"
  },
  {
   "id": "team-2",
