@@ -56,11 +56,11 @@
    "Zobal",
    "Forgelance"
   ],
-  "progressStepId": "reine-nyee",
+  "progressStepId": "haute-truche",
   "status": "alive",
   "deathStepId": null,
   "dungeonStats": [],
-  "lastUpdate": "2026-10-06T15:55:46+02:00"
+  "lastUpdate": "2026-10-08T16:59:59+02:00"
  },
  {
   "id": "team-4",
@@ -278,11 +278,11 @@
    "Xelor",
    "Huppermage"
   ],
-  "progressStepId": "maitre-corbac",
+  "progressStepId": "chene-mou",
   "status": "alive",
   "deathStepId": null,
   "dungeonStats": [],
-  "lastUpdate": "2026-10-07T19:23:18+02:00"
+  "lastUpdate": "2026-10-08T16:59:59+02:00"
  },
  {
   "id": "team-15",
@@ -377,10 +377,10 @@
    "Féca",
    "Sram"
   ],
-  "progressStepId": "reine-nyee",
+  "progressStepId": "maitre-corbac",
   "status": "alive",
   "deathStepId": null,
   "dungeonStats": [],
-  "lastUpdate": "2026-10-07T12:06:58+02:00"
+  "lastUpdate": "2026-10-08T16:59:59+02:00"
  }
 ]
