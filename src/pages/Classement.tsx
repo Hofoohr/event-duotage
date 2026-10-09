@@ -150,13 +150,6 @@ function SplitDeath({ classes }: { classes: [string, string] }) {
         )
       })}
       <div className="absolute inset-0 bg-red-950/25" />
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            'linear-gradient(to top right, transparent calc(50% - 1.5px), #f87171 calc(50% - 1.5px), #f87171 calc(50% + 1.5px), transparent calc(50% + 1.5px))',
-        }}
-      />
       <div className="absolute inset-0 ring-1 ring-inset ring-red-400/60" />
     </div>
   )
