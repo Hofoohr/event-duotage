@@ -121,6 +121,9 @@ const halves = [
   },
 ]
 
+/** Per-class tweak of the top-left portrait, so the face is not hidden behind the diagonal. */
+const topLeftShift: Record<string, string> = { Sram: '-56%' }
+
 type SplitKind = 'completed' | 'death'
 
 const splitStyle: Record<SplitKind, { label: string; layer: string; overlay: string; ring: string }> = {
@@ -154,7 +157,12 @@ function ClassSplit({ classes, kind }: { classes: [string, string]; kind: SplitK
                   src={portrait}
                   alt=""
                   className="absolute h-auto max-w-none"
-                  style={{ ...halves[i].box, maskImage: halves[i].fade, WebkitMaskImage: halves[i].fade }}
+                  style={{
+                    ...halves[i].box,
+                    ...(i === 0 && topLeftShift[c] ? { left: topLeftShift[c] } : {}),
+                    maskImage: halves[i].fade,
+                    WebkitMaskImage: halves[i].fade,
+                  }}
                 />
               </>
             ) : (
