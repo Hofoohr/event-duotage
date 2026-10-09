@@ -13,6 +13,7 @@ import {
   startsGroup,
   validatedCount,
   type CellStatus,
+  type Dungeon,
   type Participant,
 } from '../lib/tournament'
 
@@ -136,7 +137,28 @@ const splitStyle: Record<SplitKind, { label: string; layer: string; overlay: str
   },
 }
 
-function ClassSplit({ classes, kind }: { classes: [string, string]; kind: SplitKind }) {
+/** The boss of the last validated fight, or the one the team died against, drawn over the portraits. */
+function BossOverlay({ boss, kind }: { boss: Dungeon; kind: SplitKind }) {
+  const glow = kind === 'death' ? 'rgba(248,113,113,.9)' : 'rgba(74,222,128,.85)'
+  return (
+    <img
+      src={import.meta.env.BASE_URL + boss.iconUrl}
+      alt=""
+      className="absolute left-1/2 top-1/2 w-[115%] max-w-none -translate-x-1/2 -translate-y-1/2"
+      style={{ filter: `drop-shadow(0 0 8px ${glow}) drop-shadow(0 3px 5px rgba(0,0,0,.8))` }}
+    />
+  )
+}
+
+function ClassSplit({
+  classes,
+  kind,
+  boss,
+}: {
+  classes: [string, string]
+  kind: SplitKind
+  boss?: Dungeon
+}) {
   const [first, second] = classes
   const style = splitStyle[kind]
   return (
@@ -172,6 +194,7 @@ function ClassSplit({ classes, kind }: { classes: [string, string]; kind: SplitK
         )
       })}
       {style.overlay && <div className={`absolute inset-0 ${style.overlay}`} />}
+      {boss && <BossOverlay boss={boss} kind={kind} />}
       <div className={`absolute inset-0 ring-1 ring-inset ${style.ring}`} />
     </div>
   )
@@ -182,11 +205,13 @@ function Cell({ p, index }: { p: Participant; index: number }) {
   const status = cellStatus(p, d)
   const classes = p.classes ?? []
   const split = (status === 'death' || status === 'completed') && classes.length === 2
+  // boss shown on the last validated fight of a living team, or on the fight a dead team lost
+  const showBoss = status === 'death' || (status === 'completed' && p.status === 'alive' && d.order === validatedCount(p))
   return (
     <td
       className={`${split ? 'relative p-0' : 'px-4 py-4'} text-center min-w-[110px] ${startsGroup(d) ? 'border-l-4 border-l-brand-500' : ''} ${cellStyle[status]}`}
     >
-      {split && <ClassSplit classes={[classes[0], classes[1]]} kind={status as SplitKind} />}
+      {split && <ClassSplit classes={[classes[0], classes[1]]} kind={status as SplitKind} boss={showBoss ? d : undefined} />}
       {!split && status === 'completed' && (
         <>
           <span aria-hidden="true" className="text-3xl text-green-400">✓</span>
