@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react'
 import Hero from '../components/Hero'
 import config from '../data/config.json'
-import { classIcon } from '../lib/classes'
+import { classIcon, classPortrait } from '../lib/classes'
 import {
   cellStatus,
   dungeons,
@@ -102,30 +102,62 @@ function Stats({ p }: { p: Participant }) {
   )
 }
 
-/** Death cell: the rectangle is cut along its diagonal, one class on each side. */
+/**
+ * Death cell: the rectangle is cut along its diagonal and each half shows the
+ * illustration of one of the team's classes (first class top-left, second bottom-right).
+ */
+const halves = [
+  {
+    clip: 'polygon(0 0, 100% 0, 0 100%)',
+    // whole illustration (keeps its aspect ratio), placed so the face falls inside this half
+    box: { left: '-32%', top: '2%', width: '150%', aspectRatio: '468 / 417' },
+    fade: 'linear-gradient(to bottom, black 70%, transparent)',
+  },
+  {
+    clip: 'polygon(100% 0, 100% 100%, 0 100%)',
+    box: { left: '-12%', top: '38%', width: '150%', aspectRatio: '468 / 417' },
+    fade: 'linear-gradient(to bottom, transparent, black 30%)',
+  },
+]
+
 function SplitDeath({ classes }: { classes: [string, string] }) {
   const [first, second] = classes
-  const icon = (c: string, position: string) => {
-    const src = classIcon(c)
-    return src ? (
-      <img src={src} alt="" className={`absolute h-9 w-9 object-contain ${position}`} />
-    ) : (
-      <span aria-hidden="true" className={`absolute text-xs font-bold text-red-200 ${position}`}>{c}</span>
-    )
-  }
   return (
     <div
       role="img"
       aria-label={`Mort : ${first} et ${second}`}
       title={`${first} / ${second}`}
-      className="absolute inset-0"
-      style={{
-        background:
-          'linear-gradient(to top right, transparent calc(50% - 1.5px), #f87171 calc(50% - 1.5px), #f87171 calc(50% + 1.5px), transparent calc(50% + 1.5px))',
-      }}
+      className="absolute inset-0 overflow-hidden bg-red-950"
     >
-      {icon(first, 'left-2 top-2')}
-      {icon(second, 'bottom-2 right-2')}
+      {classes.map((c, i) => {
+        const portrait = classPortrait(c)
+        return (
+          <div key={i} className="absolute inset-0" style={{ clipPath: halves[i].clip }}>
+            {portrait ? (
+              <>
+                <img src={portrait} alt="" className="absolute inset-0 h-full w-full scale-125 object-cover blur-[10px] brightness-75" />
+                <img
+                  src={portrait}
+                  alt=""
+                  className="absolute h-auto max-w-none"
+                  style={{ ...halves[i].box, maskImage: halves[i].fade, WebkitMaskImage: halves[i].fade }}
+                />
+              </>
+            ) : (
+              <span className="absolute inset-0 flex items-center justify-center text-xs font-bold text-red-200">{c}</span>
+            )}
+          </div>
+        )
+      })}
+      <div className="absolute inset-0 bg-red-950/25" />
+      <div
+        className="absolute inset-0"
+        style={{
+          background:
+            'linear-gradient(to top right, transparent calc(50% - 1.5px), #f87171 calc(50% - 1.5px), #f87171 calc(50% + 1.5px), transparent calc(50% + 1.5px))',
+        }}
+      />
+      <div className="absolute inset-0 ring-1 ring-inset ring-red-400/60" />
     </div>
   )
 }
@@ -285,8 +317,7 @@ export default function Classement() {
                         alt=""
                         width={48}
                         height={48}
-                        loading="lazy"
-                        className="w-12 h-12 object-contain"
+                                className="w-12 h-12 object-contain"
                       />
                       <span className="text-xs text-gray-300">{d.name}</span>
                       <span className="text-xs text-gray-400">
