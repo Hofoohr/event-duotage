@@ -132,7 +132,7 @@ function SplitDeath({ classes }: { classes: [string, string] }) {
       {classes.map((c, i) => {
         const portrait = classPortrait(c)
         return (
-          <div key={i} className="absolute inset-0" style={{ clipPath: halves[i].clip }}>
+          <div key={i} className="absolute inset-0 grayscale brightness-[.55] contrast-110" style={{ clipPath: halves[i].clip }}>
             {portrait ? (
               <>
                 <img src={portrait} alt="" className="absolute inset-0 h-full w-full scale-125 object-cover blur-[10px] brightness-75" />
@@ -149,7 +149,7 @@ function SplitDeath({ classes }: { classes: [string, string] }) {
           </div>
         )
       })}
-      <div className="absolute inset-0 bg-red-950/25" />
+      <div className="absolute inset-0 bg-red-950/45" />
       <div className="absolute inset-0 ring-1 ring-inset ring-red-400/60" />
     </div>
   )
