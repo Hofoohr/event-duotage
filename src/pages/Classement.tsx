@@ -102,12 +102,42 @@ function Stats({ p }: { p: Participant }) {
   )
 }
 
+/** Death cell: the rectangle is cut along its diagonal, one class on each side. */
+function SplitDeath({ classes }: { classes: [string, string] }) {
+  const [first, second] = classes
+  const icon = (c: string, position: string) => {
+    const src = classIcon(c)
+    return src ? (
+      <img src={src} alt="" className={`absolute h-9 w-9 object-contain ${position}`} />
+    ) : (
+      <span aria-hidden="true" className={`absolute text-xs font-bold text-red-200 ${position}`}>{c}</span>
+    )
+  }
+  return (
+    <div
+      role="img"
+      aria-label={`Mort : ${first} et ${second}`}
+      title={`${first} / ${second}`}
+      className="absolute inset-0"
+      style={{
+        background:
+          'linear-gradient(to top right, transparent calc(50% - 1.5px), #f87171 calc(50% - 1.5px), #f87171 calc(50% + 1.5px), transparent calc(50% + 1.5px))',
+      }}
+    >
+      {icon(first, 'left-2 top-2')}
+      {icon(second, 'bottom-2 right-2')}
+    </div>
+  )
+}
+
 function Cell({ p, index }: { p: Participant; index: number }) {
   const d = dungeons[index]
   const status = cellStatus(p, d)
+  const classes = p.classes ?? []
+  const split = status === 'death' && classes.length === 2
   return (
     <td
-      className={`px-4 py-4 text-center min-w-[110px] ${startsGroup(d) ? 'border-l-4 border-l-brand-500' : ''} ${cellStyle[status]}`}
+      className={`${split ? 'relative p-0' : 'px-4 py-4'} text-center min-w-[110px] ${startsGroup(d) ? 'border-l-4 border-l-brand-500' : ''} ${cellStyle[status]}`}
     >
       {status === 'completed' && (
         <>
@@ -115,7 +145,8 @@ function Cell({ p, index }: { p: Participant; index: number }) {
           <div className="text-xs text-green-400/80 font-semibold">Validé</div>
         </>
       )}
-      {status === 'death' && (
+      {status === 'death' && split && <SplitDeath classes={[classes[0], classes[1]]} />}
+      {status === 'death' && !split && (
         <>
           <span aria-hidden="true" className="text-3xl text-red-400">☠</span>
           <div className="text-xs text-red-400/80 font-semibold">Mort</div>
