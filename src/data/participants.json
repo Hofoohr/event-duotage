@@ -140,11 +140,11 @@
    "Roublard",
    "Forgelance"
   ],
-  "progressStepId": "reine-nyee",
-  "status": "alive",
-  "deathStepId": null,
+  "progressStepId": "haute-truche",
+  "status": "dead",
+  "deathStepId": "haute-truche",
   "dungeonStats": [],
-  "lastUpdate": "2026-10-06T15:55:46+02:00"
+  "lastUpdate": "2026-10-09T03:51:38+02:00"
  },
  {
   "id": "team-8",
@@ -197,11 +197,11 @@
    "Ouginak",
    "Ecaflip"
   ],
-  "progressStepId": "chene-mou",
+  "progressStepId": "sphincter-cell",
   "status": "alive",
   "deathStepId": null,
   "dungeonStats": [],
-  "lastUpdate": "2026-10-07T01:26:48+02:00"
+  "lastUpdate": "2026-10-09T03:51:38+02:00"
  },
  {
   "id": "team-11",
@@ -377,10 +377,10 @@
    "Féca",
    "Sram"
   ],
-  "progressStepId": "maitre-corbac",
+  "progressStepId": "croca",
   "status": "alive",
   "deathStepId": null,
   "dungeonStats": [],
-  "lastUpdate": "2026-10-08T16:59:59+02:00"
+  "lastUpdate": "2026-10-09T03:51:38+02:00"
  }
 ]
