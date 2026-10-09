@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react'
 import Hero from '../components/Hero'
 import config from '../data/config.json'
-import { classIcon } from '../lib/classes'
+import { classIcon, classPortrait } from '../lib/classes'
 import {
   cellStatus,
   dungeons,
@@ -102,20 +102,90 @@ function Stats({ p }: { p: Participant }) {
   )
 }
 
+/**
+ * Cells that show the team's classes: the rectangle is cut along its diagonal and each half shows
+ * the illustration of one of the two classes (first class top-left, second bottom-right).
+ * Validated fights are in colour, the fight the team died on is desaturated and darkened.
+ */
+const halves = [
+  {
+    clip: 'polygon(0 0, 100% 0, 0 100%)',
+    // whole illustration (keeps its aspect ratio), placed so the face falls inside this half
+    box: { left: '-32%', top: '2%', width: '150%', aspectRatio: '468 / 417' },
+    fade: 'linear-gradient(to bottom, black 70%, transparent)',
+  },
+  {
+    clip: 'polygon(100% 0, 100% 100%, 0 100%)',
+    box: { left: '-12%', top: '38%', width: '150%', aspectRatio: '468 / 417' },
+    fade: 'linear-gradient(to bottom, transparent, black 30%)',
+  },
+]
+
+type SplitKind = 'completed' | 'death'
+
+const splitStyle: Record<SplitKind, { label: string; layer: string; overlay: string; ring: string }> = {
+  completed: { label: 'Validé', layer: '', overlay: '', ring: 'ring-green-400/50' },
+  death: {
+    label: 'Mort',
+    layer: 'grayscale brightness-[.55] contrast-110',
+    overlay: 'bg-red-950/45',
+    ring: 'ring-red-400/60',
+  },
+}
+
+function ClassSplit({ classes, kind }: { classes: [string, string]; kind: SplitKind }) {
+  const [first, second] = classes
+  const style = splitStyle[kind]
+  return (
+    <div
+      role="img"
+      aria-label={`${style.label} : ${first} et ${second}`}
+      title={`${style.label} : ${first} / ${second}`}
+      className="absolute inset-0 overflow-hidden bg-gray-900"
+    >
+      {classes.map((c, i) => {
+        const portrait = classPortrait(c)
+        return (
+          <div key={i} className={`absolute inset-0 ${style.layer}`} style={{ clipPath: halves[i].clip }}>
+            {portrait ? (
+              <>
+                <img src={portrait} alt="" className="absolute inset-0 h-full w-full scale-125 object-cover blur-[10px] brightness-75" />
+                <img
+                  src={portrait}
+                  alt=""
+                  className="absolute h-auto max-w-none"
+                  style={{ ...halves[i].box, maskImage: halves[i].fade, WebkitMaskImage: halves[i].fade }}
+                />
+              </>
+            ) : (
+              <span className="absolute inset-0 flex items-center justify-center text-xs font-bold text-gray-200">{c}</span>
+            )}
+          </div>
+        )
+      })}
+      {style.overlay && <div className={`absolute inset-0 ${style.overlay}`} />}
+      <div className={`absolute inset-0 ring-1 ring-inset ${style.ring}`} />
+    </div>
+  )
+}
+
 function Cell({ p, index }: { p: Participant; index: number }) {
   const d = dungeons[index]
   const status = cellStatus(p, d)
+  const classes = p.classes ?? []
+  const split = (status === 'death' || status === 'completed') && classes.length === 2
   return (
     <td
-      className={`px-4 py-4 text-center min-w-[110px] ${startsGroup(d) ? 'border-l-4 border-l-brand-500' : ''} ${cellStyle[status]}`}
+      className={`${split ? 'relative p-0' : 'px-4 py-4'} text-center min-w-[110px] ${startsGroup(d) ? 'border-l-4 border-l-brand-500' : ''} ${cellStyle[status]}`}
     >
-      {status === 'completed' && (
+      {split && <ClassSplit classes={[classes[0], classes[1]]} kind={status as SplitKind} />}
+      {!split && status === 'completed' && (
         <>
           <span aria-hidden="true" className="text-3xl text-green-400">✓</span>
           <div className="text-xs text-green-400/80 font-semibold">Validé</div>
         </>
       )}
-      {status === 'death' && (
+      {!split && status === 'death' && (
         <>
           <span aria-hidden="true" className="text-3xl text-red-400">☠</span>
           <div className="text-xs text-red-400/80 font-semibold">Mort</div>
@@ -254,8 +324,7 @@ export default function Classement() {
                         alt=""
                         width={48}
                         height={48}
-                        loading="lazy"
-                        className="w-12 h-12 object-contain"
+                                className="w-12 h-12 object-contain"
                       />
                       <span className="text-xs text-gray-300">{d.name}</span>
                       <span className="text-xs text-gray-400">

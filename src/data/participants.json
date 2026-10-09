@@ -32,8 +32,8 @@
    }
   ],
   "classes": [
-   "Eniripsa",
-   "Sadida"
+   "Sadida",
+   "Eniripsa"
   ],
   "progressStepId": "reine-nyee",
   "status": "alive",
@@ -194,8 +194,8 @@
    }
   ],
   "classes": [
-   "Ouginak",
-   "Ecaflip"
+   "Ecaflip",
+   "Ouginak"
   ],
   "progressStepId": "sphincter-cell",
   "status": "alive",
@@ -353,8 +353,8 @@
    }
   ],
   "classes": [
-   "Eliotrope",
-   "Steameur"
+   "Steameur",
+   "Eliotrope"
   ],
   "progressStepId": "reine-nyee",
   "status": "alive",
@@ -374,8 +374,8 @@
    }
   ],
   "classes": [
-   "Féca",
-   "Sram"
+   "Sram",
+   "Féca"
   ],
   "progressStepId": "croca",
   "status": "alive",

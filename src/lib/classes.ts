@@ -22,3 +22,29 @@ const ids: Record<string, number> = {
 
 export const classIcon = (name: string) =>
   ids[name] ? `${import.meta.env.BASE_URL}classes/${ids[name]}.png` : undefined
+
+/** Illustration files in public/classes, named after the class. */
+const portraits: Record<string, string> = {
+  Féca: 'feca',
+  Osamodas: 'osa',
+  Enutrof: 'enu',
+  Sram: 'sram',
+  Xelor: 'xelor',
+  Ecaflip: 'eca',
+  Eniripsa: 'eni',
+  Iop: 'iop',
+  Crâ: 'cra',
+  Sadida: 'sadi',
+  Sacrieur: 'sacri',
+  Pandawa: 'panda',
+  Roublard: 'roub',
+  Zobal: 'zobal',
+  Steameur: 'steamer',
+  Eliotrope: 'elio',
+  Huppermage: 'hupper',
+  Ouginak: 'ougi',
+  Forgelance: 'forgelance',
+}
+
+export const classPortrait = (name: string) =>
+  portraits[name] ? `${import.meta.env.BASE_URL}classes/${portraits[name]}.jpg` : undefined
