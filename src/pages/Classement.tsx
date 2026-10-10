@@ -41,7 +41,14 @@ const statusLabel: Record<CellStatus, string> = {
 function Status({ p }: { p: Participant }) {
   if (p.status === 'alive') return <p className="text-sm text-green-400 font-semibold">✓ Toujours en vie</p>
   const name = dungeons.find(d => d.id === p.deathStepId)?.name
-  return <p className="text-sm text-red-400 font-semibold">✕ Mort face à {name || 'un combat'}</p>
+  return (
+    <p className="text-sm text-red-400 font-semibold">
+      ✕ Mort face à {name || 'un combat'}{' '}
+      <span role="img" aria-label="mort de rire">
+        😂
+      </span>
+    </p>
+  )
 }
 
 function Chips({ p }: { p: Participant }) {
