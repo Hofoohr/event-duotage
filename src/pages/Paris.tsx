@@ -54,7 +54,7 @@ export default function Paris() {
         </div>
       </Hero>
 
-      <section className="container mx-auto px-4 sm:px-6 py-12">
+      <section className="page-width px-4 sm:px-6 py-12">
         <div className="mb-12 bg-yellow-900/20 border border-yellow-600/30 rounded-lg p-6">
           <p className="text-yellow-300 text-center font-semibold">
             ℹ️ Les cotes et mises sont mises à jour manuellement. Cette page est en lecture seule.
