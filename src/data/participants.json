@@ -279,10 +279,10 @@
    "Huppermage"
   ],
   "progressStepId": "sphincter-cell",
-  "status": "dead",
-  "deathStepId": "sphincter-cell",
+  "status": "alive",
+  "deathStepId": null,
   "dungeonStats": [],
-  "lastUpdate": "2026-10-12T22:29:07+02:00"
+  "lastUpdate": "2026-10-12T22:32:35+02:00"
  },
  {
   "id": "team-15",
