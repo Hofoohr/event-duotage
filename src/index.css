@@ -1,11 +1,18 @@
 @tailwind base; @tailwind components; @tailwind utilities;
 body{margin:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Fira Sans','Droid Sans','Helvetica Neue',sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background:#0a1115;color:white}*{box-sizing:border-box}
 
-/* Page width: like Tailwind's `container`, but the empty margin on each side is half as wide.
-   Container width at a breakpoint is C, so the width here is (100% + C) / 2 = 50% + C/2. */
+/* Site zoom: everything is scaled down on desktop screens (phones and tablets keep their size). */
+:root{--site-zoom:1}
+@media (min-width:1024px){:root{--site-zoom:.9}}
+html{zoom:var(--site-zoom)}
+
+/* Page width: like Tailwind's `container`, but the empty margin on each side is 2/3 of the container's.
+   With a container width C at a breakpoint and a viewport V, the width here is (V + 2C) / 3, i.e.
+   33.33% + (2C/3). The page is zoomed by --site-zoom, so the pixel part is divided by it
+   (the percentage already refers to the zoomed viewport). */
 .page-width{margin-left:auto;margin-right:auto;width:100%}
-@media (min-width:640px){.page-width{max-width:calc(50% + 320px)}}
-@media (min-width:768px){.page-width{max-width:calc(50% + 384px)}}
-@media (min-width:1024px){.page-width{max-width:calc(50% + 512px)}}
-@media (min-width:1280px){.page-width{max-width:calc(50% + 640px)}}
-@media (min-width:1536px){.page-width{max-width:calc(50% + 768px)}}
+@media (min-width:640px){.page-width{max-width:calc(33.3333% + 426.667px / var(--site-zoom))}}
+@media (min-width:768px){.page-width{max-width:calc(33.3333% + 512px / var(--site-zoom))}}
+@media (min-width:1024px){.page-width{max-width:calc(33.3333% + 682.667px / var(--site-zoom))}}
+@media (min-width:1280px){.page-width{max-width:calc(33.3333% + 853.333px / var(--site-zoom))}}
+@media (min-width:1536px){.page-width{max-width:calc(33.3333% + 1024px / var(--site-zoom))}}
