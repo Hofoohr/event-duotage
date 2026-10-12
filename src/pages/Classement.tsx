@@ -291,7 +291,7 @@ export default function Classement() {
         </div>
       </Hero>
 
-      <section className="container mx-auto px-4 sm:px-6 py-12">
+      <section className="page-width px-4 sm:px-6 py-12">
         <div className="mb-8 flex justify-end">
           <label className="w-full sm:w-64">
             <span className="sr-only">Rechercher une équipe, un joueur ou une classe</span>
