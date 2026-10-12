@@ -161,11 +161,11 @@
    "Enutrof",
    "Xelor"
   ],
-  "progressStepId": "maitre-corbac",
+  "progressStepId": "mansot-royal",
   "status": "alive",
   "deathStepId": null,
   "dungeonStats": [],
-  "lastUpdate": "2026-10-10T14:30:25+02:00"
+  "lastUpdate": "2026-10-12T12:56:49+02:00"
  },
  {
   "id": "team-9",
@@ -197,11 +197,11 @@
    "Ecaflip",
    "Ouginak"
   ],
-  "progressStepId": "kanigroula",
+  "progressStepId": "koumiho",
   "status": "alive",
   "deathStepId": null,
   "dungeonStats": [],
-  "lastUpdate": "2026-10-11T14:56:39+02:00"
+  "lastUpdate": "2026-10-12T12:56:49+02:00"
  },
  {
   "id": "team-11",
@@ -377,10 +377,10 @@
    "Sram",
    "Féca"
   ],
-  "progressStepId": "mansot-royal",
-  "status": "alive",
-  "deathStepId": null,
+  "progressStepId": "haute-truche",
+  "status": "dead",
+  "deathStepId": "haute-truche",
   "dungeonStats": [],
-  "lastUpdate": "2026-10-10T14:30:25+02:00"
+  "lastUpdate": "2026-10-12T12:56:49+02:00"
  }
 ]
