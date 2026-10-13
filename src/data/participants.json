@@ -35,11 +35,11 @@
    "Sadida",
    "Eniripsa"
   ],
-  "progressStepId": "croca",
+  "progressStepId": "chene-mou",
   "status": "alive",
   "deathStepId": null,
   "dungeonStats": [],
-  "lastUpdate": "2026-10-12T22:14:20+02:00"
+  "lastUpdate": "2026-10-13T04:41:56+02:00"
  },
  {
   "id": "team-3",
@@ -197,11 +197,11 @@
    "Ecaflip",
    "Ouginak"
   ],
-  "progressStepId": "koumiho",
+  "progressStepId": "ombre",
   "status": "alive",
   "deathStepId": null,
   "dungeonStats": [],
-  "lastUpdate": "2026-10-12T12:56:49+02:00"
+  "lastUpdate": "2026-10-13T04:41:56+02:00"
  },
  {
   "id": "team-11",
