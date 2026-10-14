@@ -21,6 +21,7 @@ const cellStyle: Record<CellStatus, string> = {
   completed: 'bg-green-900/40',
   death: 'bg-red-900/50',
   'in-progress': 'bg-brand-900/40',
+  available: 'bg-brand-900/20',
   'not-reached': 'bg-gray-800/20',
 }
 
@@ -28,6 +29,7 @@ const segmentStyle: Record<CellStatus, string> = {
   completed: 'bg-green-500',
   death: 'bg-red-500',
   'in-progress': 'bg-brand-500 motion-safe:animate-pulse',
+  available: 'bg-brand-500/50',
   'not-reached': 'bg-gray-700',
 }
 
@@ -35,6 +37,7 @@ const statusLabel: Record<CellStatus, string> = {
   completed: 'Validé',
   death: 'Mort',
   'in-progress': 'En cours',
+  available: 'Disponible',
   'not-reached': 'Non atteint',
 }
 
@@ -208,7 +211,7 @@ function ClassSplit({
 }
 
 /** The boss a living team has to beat next: shown in its "in progress" cell. */
-function NextBoss({ boss }: { boss: Dungeon }) {
+function NextBoss({ boss, label = 'En cours' }: { boss: Dungeon; label?: string }) {
   return (
     <>
       <img
@@ -218,9 +221,9 @@ function NextBoss({ boss }: { boss: Dungeon }) {
         style={{ filter: 'drop-shadow(0 0 8px rgba(47,208,189,.75)) drop-shadow(0 3px 5px rgba(0,0,0,.7))' }}
       />
       <div aria-hidden="true" className="absolute inset-x-0 bottom-2 text-xs font-semibold text-brand-400/90">
-        <span className="mr-1 motion-safe:animate-pulse">◉</span>En cours
+        <span className="mr-1 motion-safe:animate-pulse">◉</span>{label}
       </div>
-      <span className="sr-only">En cours : {boss.name}</span>
+      <span className="sr-only">{label} : {boss.name}</span>
     </>
   )
 }
@@ -234,7 +237,7 @@ function Cell({ p, index }: { p: Participant; index: number }) {
   const showBoss = status === 'death' || (status === 'completed' && p.status === 'alive' && d.order === validatedCount(p))
   return (
     <td
-      className={`${split || status === 'in-progress' ? 'relative p-0' : 'px-4 py-4'} text-center min-w-[110px] ${startsGroup(d) ? 'border-l-4 border-l-brand-500' : ''} ${cellStyle[status]}`}
+      className={`${split || status === 'in-progress' || status === 'available' ? 'relative p-0' : 'px-4 py-4'} text-center min-w-[110px] ${startsGroup(d) ? 'border-l-4 border-l-brand-500' : ''} ${cellStyle[status]}`}
     >
       {split && <ClassSplit classes={[classes[0], classes[1]]} kind={status as SplitKind} boss={showBoss ? d : undefined} />}
       {!split && status === 'completed' && (
@@ -250,6 +253,7 @@ function Cell({ p, index }: { p: Participant; index: number }) {
         </>
       )}
       {status === 'in-progress' && <NextBoss boss={d} />}
+      {status === 'available' && <NextBoss boss={d} label="Disponible" />}
       {status === 'not-reached' && (
         <>
           <span aria-hidden="true" className="text-xl text-gray-500">-</span>

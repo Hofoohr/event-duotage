@@ -28,7 +28,7 @@ export interface Participant {
   lastUpdate: string
 }
 
-export type CellStatus = 'completed' | 'death' | 'in-progress' | 'not-reached'
+export type CellStatus = 'completed' | 'death' | 'in-progress' | 'available' | 'not-reached'
 
 export interface DungeonGroup {
   key: string
@@ -86,7 +86,9 @@ export const validatedCount = (p: Participant) => Math.max(currentStep(p) - 1, 0
 export function cellStatus(p: Participant, d: Dungeon): CellStatus {
   const cur = currentStep(p)
   if (cur > d.order) return 'completed'
-  if (cur < d.order || cur === 0) return 'not-reached'
+  if (cur === 0) return 'not-reached'
+  // once the free-order bosses are reached, a living team may take any of the remaining ones
+  if (cur < d.order) return p.status === 'alive' && d.freeOrder && dungeons.find(x => x.order === cur)?.freeOrder ? 'available' : 'not-reached'
   return p.status === 'dead' ? 'death' : 'in-progress'
 }
 
