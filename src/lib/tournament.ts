@@ -94,9 +94,8 @@ export interface Tier {
 }
 
 export const tiers: Tier[] = [
-  { id: 'dantinea', title: 'Dantinéa et au-delà', from: orderOf('danti'), to: lastOrder },
-  { id: 'chene-mou', title: 'À partir du Chêne Mou', from: orderOf('chene-mou'), to: orderOf('danti') - 1 },
-  { id: 'debut', title: 'Avant le Chêne Mou', from: 0, to: orderOf('chene-mou') - 1 },
+  { id: 'niv-165', title: 'Donjons niveau 165', from: orderOf('chene-mou'), to: lastOrder },
+  { id: 'niv-105', title: 'Donjons niveau 105', from: 0, to: orderOf('chene-mou') - 1 },
 ]
 
 /** "Chêne Mou → Bworker" */
