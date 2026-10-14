@@ -260,11 +260,11 @@
    "Crâ",
    "Sacrieur"
   ],
-  "progressStepId": "chene-mou",
+  "progressStepId": "hell-mina",
   "status": "alive",
   "deathStepId": null,
   "dungeonStats": [],
-  "lastUpdate": "2026-10-07T22:58:27+02:00"
+  "lastUpdate": "2026-10-14T22:23:38+02:00"
  },
  {
   "id": "team-14",
@@ -335,11 +335,11 @@
    "Enutrof",
    "Ouginak"
   ],
-  "progressStepId": "haute-truche",
+  "progressStepId": "chene-mou",
   "status": "alive",
   "deathStepId": null,
   "dungeonStats": [],
-  "lastUpdate": "2026-10-07T12:07:36+02:00"
+  "lastUpdate": "2026-10-14T22:23:38+02:00"
  },
  {
   "id": "team-18",
