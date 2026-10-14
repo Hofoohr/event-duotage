@@ -14,6 +14,7 @@ import {
   startsGroup,
   tierRange,
   tiers,
+  type Tier,
   validatedCount,
   type CellStatus,
   type Dungeon,
@@ -307,7 +308,8 @@ function TeamCards({ rows, expanded, toggle }: GroupProps) {
 }
 
 /** Desktop: one table, a row per team and a column per fight. */
-function RankingTable({ rows, expanded, toggle, caption }: GroupProps & { caption: string }) {
+function RankingTable({ rows, expanded, toggle, caption, tier }: GroupProps & { caption: string; tier: Tier }) {
+  const cols = dungeons.map((d, i) => ({ d, i })).filter(({ d }) => d.order >= Math.max(tier.from, 1) && d.order <= tier.to)
   return (
     <div className="relative overflow-x-auto">
       <table className="w-full border-collapse">
@@ -320,7 +322,7 @@ function RankingTable({ rows, expanded, toggle, caption }: GroupProps & { captio
             >
               # / Team
             </th>
-            {dungeons.map(d => (
+            {cols.map(({ d }) => (
               <th
                 key={d.id}
                 scope="col"
@@ -369,7 +371,7 @@ function RankingTable({ rows, expanded, toggle, caption }: GroupProps & { captio
                       </div>
                     </div>
                   </th>
-                  {dungeons.map((d, i) => (
+                  {cols.map(({ d, i }) => (
                     <Cell key={d.id} p={p} index={i} />
                   ))}
                 </tr>
@@ -381,7 +383,7 @@ function RankingTable({ rows, expanded, toggle, caption }: GroupProps & { captio
                     >
                       Tours / Dégâts
                     </th>
-                    {dungeons.map(d => {
+                    {cols.map(({ d }) => {
                       const s = p.dungeonStats.find(x => x.dungeonId === d.id)
                       return (
                         <td key={d.id} className="px-4 py-3 text-center text-xs text-white">
@@ -491,7 +493,7 @@ export default function Classement() {
                     <TeamCards rows={group} expanded={expanded} toggle={toggle} />
                   </div>
                   <div className="hidden md:block">
-                    <RankingTable rows={group} expanded={expanded} toggle={toggle} caption={`${tier.title} : progression combat par combat`} />
+                    <RankingTable rows={group} expanded={expanded} toggle={toggle} caption={`${tier.title} : progression combat par combat`} tier={tier} />
                   </div>
                 </>
               )}
