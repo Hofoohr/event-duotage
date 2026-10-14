@@ -80,27 +80,6 @@ export function currentStep(p: Participant): number {
   return d ? d.order : 0
 }
 
-/** The ranking is split in three tables according to the fight a team is on (dead teams included). */
-const orderOf = (id: string) => dungeons.find(d => d.id === id)?.order ?? 0
-const nameOf = (order: number) => dungeons.find(d => d.order === order)?.name ?? ''
-const lastOrder = dungeons[dungeons.length - 1].order
-
-export interface Tier {
-  id: string
-  title: string
-  /** First and last fight order of the tier (a team that has not started is on order 0). */
-  from: number
-  to: number
-}
-
-export const tiers: Tier[] = [
-  { id: 'niv-165', title: 'Donjons niveau 165', from: orderOf('chene-mou'), to: lastOrder },
-  { id: 'niv-105', title: 'Donjons niveau 105', from: 0, to: orderOf('chene-mou') - 1 },
-]
-
-/** "Chêne Mou → Bworker" */
-export const tierRange = (t: Tier) => `${nameOf(Math.max(t.from, 1))} → ${nameOf(t.to)}`
-
 /** The current step is either in progress or the one the team died on: it is not validated. */
 export const validatedCount = (p: Participant) => Math.max(currentStep(p) - 1, 0)
 
@@ -134,9 +113,4 @@ export function matchesQuery(p: Participant, query: string) {
   return [p.displayName, ...p.members.flatMap(m => [m.pseudo, m.class ?? '']), ...(p.classes ?? [])].some(s =>
     fold(s).includes(q),
   )
-}
-
-export const inTier = (p: Participant, t: Tier) => {
-  const step = currentStep(p)
-  return step >= t.from && step <= t.to
 }
