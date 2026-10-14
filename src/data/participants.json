@@ -260,11 +260,11 @@
    "Crâ",
    "Sacrieur"
   ],
-  "progressStepId": "hell-mina",
+  "progressStepId": "kimbo",
   "status": "alive",
   "deathStepId": null,
   "dungeonStats": [],
-  "lastUpdate": "2026-10-14T22:23:38+02:00"
+  "lastUpdate": "2026-10-14T23:49:48+02:00"
  },
  {
   "id": "team-14",
@@ -278,11 +278,11 @@
    "Xelor",
    "Huppermage"
   ],
-  "progressStepId": "kimbo",
+  "progressStepId": "kanigroula",
   "status": "alive",
   "deathStepId": null,
   "dungeonStats": [],
-  "lastUpdate": "2026-10-14T22:53:07+02:00"
+  "lastUpdate": "2026-10-14T23:49:48+02:00"
  },
  {
   "id": "team-15",
