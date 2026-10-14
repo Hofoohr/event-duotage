@@ -6,11 +6,14 @@ import {
   cellStatus,
   dungeons,
   formatDate,
+  inTier,
   levelRange,
   matchesQuery,
   participants,
   rankTeams,
   startsGroup,
+  tierRange,
+  tiers,
   validatedCount,
   type CellStatus,
   type Dungeon,
@@ -260,6 +263,151 @@ function Cell({ p, index }: { p: Participant; index: number }) {
   )
 }
 
+type RankedTeam = { team: Participant; rank: number }
+interface GroupProps {
+  rows: RankedTeam[]
+  expanded: Set<string>
+  toggle: (id: string) => void
+}
+
+/** Phones: one card per team. */
+function TeamCards({ rows, expanded, toggle }: GroupProps) {
+  return (
+    <ol className="space-y-4">
+      {rows.map(({ team: p, rank }) => {
+        const open = expanded.has(p.id)
+        return (
+          <li key={p.id} className="rounded-lg border border-gray-800 bg-gray-900/60 p-4">
+            <div className="flex items-start gap-3">
+              <span className="text-2xl font-bold text-gray-400 min-w-[2rem]">{rank}</span>
+              <div className="min-w-0 flex-1">
+                <TeamName p={p} open={open} toggle={() => toggle(p.id)} />
+                <Chips p={p} />
+                <p className="text-sm text-gray-400">
+                  {validatedCount(p)}/{dungeons.length} combats validés
+                </p>
+                <Status p={p} />
+                <div className="mt-3 flex gap-0.5" role="img" aria-label={`${validatedCount(p)} combats validés sur ${dungeons.length}`}>
+                  {dungeons.map(d => (
+                    <span
+                      key={d.id}
+                      title={`${d.name} — ${statusLabel[cellStatus(p, d)]}`}
+                      className={`h-2 flex-1 rounded-sm ${segmentStyle[cellStatus(p, d)]}`}
+                    />
+                  ))}
+                </div>
+                {open && <Stats p={p} />}
+              </div>
+            </div>
+          </li>
+        )
+      })}
+    </ol>
+  )
+}
+
+/** Desktop: one table, a row per team and a column per fight. */
+function RankingTable({ rows, expanded, toggle, caption }: GroupProps & { caption: string }) {
+  return (
+    <div className="relative overflow-x-auto">
+      <table className="w-full border-collapse">
+        <caption className="sr-only">{caption}</caption>
+        <thead>
+          <tr className="bg-gray-800/50">
+            <th
+              scope="col"
+              className="sticky left-0 z-20 bg-gray-800 px-4 py-3 text-left font-bold text-white border-b-2 border-gray-700 min-w-[240px]"
+            >
+              # / Team
+            </th>
+            {dungeons.map(d => (
+              <th
+                key={d.id}
+                scope="col"
+                className={`px-4 py-3 text-center font-semibold text-sm border-b-2 border-gray-700 whitespace-nowrap min-w-[110px] ${startsGroup(d) ? 'border-l-4 border-l-brand-500' : ''}`}
+              >
+                <div className="flex flex-col items-center gap-2">
+                  <img
+                    src={import.meta.env.BASE_URL + d.iconUrl}
+                    onError={e => {
+                      e.currentTarget.style.visibility = 'hidden'
+                    }}
+                    alt=""
+                    width={48}
+                    height={48}
+                            className="w-12 h-12 object-contain"
+                  />
+                  <span className="text-xs text-gray-300">{d.name}</span>
+                  <span className="text-xs text-gray-400">
+                    Niv. {d.level}
+                    {d.freeOrder ? ' • ordre libre' : ''}
+                  </span>
+                </div>
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {rows.map(({ team: p, rank }) => {
+            const open = expanded.has(p.id)
+            return (
+              <React.Fragment key={p.id}>
+                <tr className="border-b border-gray-800 hover:bg-gray-800/30">
+                  <th
+                    scope="row"
+                    className="sticky left-0 z-10 bg-gray-900 px-4 py-4 border-r border-gray-800 text-left font-normal"
+                  >
+                    <div className="flex items-start gap-3">
+                      <span className="text-2xl font-bold text-gray-400 min-w-[2rem]">{rank}</span>
+                      <div>
+                        <TeamName p={p} open={open} toggle={() => toggle(p.id)} />
+                        <Chips p={p} />
+                        <p className="text-sm text-gray-400">
+                          {validatedCount(p)}/{dungeons.length} combats validés
+                        </p>
+                        <Status p={p} />
+                      </div>
+                    </div>
+                  </th>
+                  {dungeons.map((d, i) => (
+                    <Cell key={d.id} p={p} index={i} />
+                  ))}
+                </tr>
+                {open && p.dungeonStats.length > 0 && (
+                  <tr className="bg-gray-800/50">
+                    <th
+                      scope="row"
+                      className="sticky left-0 z-10 bg-gray-800 px-4 py-3 text-left text-xs font-normal text-gray-400"
+                    >
+                      Tours / Dégâts
+                    </th>
+                    {dungeons.map(d => {
+                      const s = p.dungeonStats.find(x => x.dungeonId === d.id)
+                      return (
+                        <td key={d.id} className="px-4 py-3 text-center text-xs text-white">
+                          {s ? (
+                            <>
+                              {s.turns}
+                              <br />
+                              {s.damage.toLocaleString('fr-FR')}
+                            </>
+                          ) : (
+                            <span className="text-gray-500">-</span>
+                          )}
+                        </td>
+                      )
+                    })}
+                  </tr>
+                )}
+              </React.Fragment>
+            )
+          })}
+        </tbody>
+      </table>
+    </div>
+  )
+}
+
 export default function Classement() {
   const [q, setQ] = useState('')
   const [expanded, setExpanded] = useState<Set<string>>(new Set())
@@ -304,7 +452,7 @@ export default function Classement() {
         </div>
       </Hero>
 
-      <section className="page-width px-4 sm:px-6 py-12">
+      <div className="page-width px-4 sm:px-6 py-12">
         <div className="mb-8 flex justify-end">
           <label className="w-full sm:w-64">
             <span className="sr-only">Rechercher une équipe, un joueur ou une classe</span>
@@ -318,142 +466,44 @@ export default function Classement() {
           </label>
         </div>
 
-        {/* Mobile: one card per team */}
-        <ol className="md:hidden space-y-4">
-          {rows.map(({ team: p, rank }) => {
-            const open = expanded.has(p.id)
-            return (
-              <li key={p.id} className="rounded-lg border border-gray-800 bg-gray-900/60 p-4">
-                <div className="flex items-start gap-3">
-                  <span className="text-2xl font-bold text-gray-400 min-w-[2rem]">{rank}</span>
-                  <div className="min-w-0 flex-1">
-                    <TeamName p={p} open={open} toggle={() => toggle(p.id)} />
-                    <Chips p={p} />
-                    <p className="text-sm text-gray-400">
-                      {validatedCount(p)}/{dungeons.length} combats validés
-                    </p>
-                    <Status p={p} />
-                    <div className="mt-3 flex gap-0.5" role="img" aria-label={`${validatedCount(p)} combats validés sur ${dungeons.length}`}>
-                      {dungeons.map(d => (
-                        <span
-                          key={d.id}
-                          title={`${d.name} — ${statusLabel[cellStatus(p, d)]}`}
-                          className={`h-2 flex-1 rounded-sm ${segmentStyle[cellStatus(p, d)]}`}
-                        />
-                      ))}
-                    </div>
-                    {open && <Stats p={p} />}
+        {tiers.map(tier => {
+          const group = rows.filter(r => inTier(r.team, tier))
+          // while searching, a group without any match is hidden
+          if (group.length === 0 && q.trim()) return null
+          return (
+            <section key={tier.id} aria-labelledby={`tier-${tier.id}`} className="mb-14 last:mb-0">
+              <header className="mb-4 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                <h2 id={`tier-${tier.id}`} className="text-2xl font-bold text-white">
+                  {tier.title}
+                </h2>
+                <span className="rounded-full bg-gray-800 px-3 py-0.5 text-sm text-gray-300">
+                  {group.length} équipe{group.length > 1 ? 's' : ''}
+                </span>
+                <span className="text-sm text-gray-400">{tierRange(tier)}</span>
+              </header>
+              {group.length === 0 ? (
+                <p className="rounded-lg border border-gray-800 bg-gray-900/40 px-4 py-6 text-center text-gray-400">
+                  Aucune équipe à ce stade pour le moment.
+                </p>
+              ) : (
+                <>
+                  <div className="md:hidden">
+                    <TeamCards rows={group} expanded={expanded} toggle={toggle} />
                   </div>
-                </div>
-              </li>
-            )
-          })}
-        </ol>
-
-        {/* Desktop: full table */}
-        <div className="relative hidden md:block overflow-x-auto">
-          <table className="w-full border-collapse">
-            <caption className="sr-only">Progression des équipes combat par combat</caption>
-            <thead>
-              <tr className="bg-gray-800/50">
-                <th
-                  scope="col"
-                  className="sticky left-0 z-20 bg-gray-800 px-4 py-3 text-left font-bold text-white border-b-2 border-gray-700 min-w-[240px]"
-                >
-                  # / Team
-                </th>
-                {dungeons.map(d => (
-                  <th
-                    key={d.id}
-                    scope="col"
-                    className={`px-4 py-3 text-center font-semibold text-sm border-b-2 border-gray-700 whitespace-nowrap min-w-[110px] ${startsGroup(d) ? 'border-l-4 border-l-brand-500' : ''}`}
-                  >
-                    <div className="flex flex-col items-center gap-2">
-                      <img
-                        src={import.meta.env.BASE_URL + d.iconUrl}
-                        onError={e => {
-                          e.currentTarget.style.visibility = 'hidden'
-                        }}
-                        alt=""
-                        width={48}
-                        height={48}
-                                className="w-12 h-12 object-contain"
-                      />
-                      <span className="text-xs text-gray-300">{d.name}</span>
-                      <span className="text-xs text-gray-400">
-                        Niv. {d.level}
-                        {d.freeOrder ? ' • ordre libre' : ''}
-                      </span>
-                    </div>
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map(({ team: p, rank }) => {
-                const open = expanded.has(p.id)
-                return (
-                  <React.Fragment key={p.id}>
-                    <tr className="border-b border-gray-800 hover:bg-gray-800/30">
-                      <th
-                        scope="row"
-                        className="sticky left-0 z-10 bg-gray-900 px-4 py-4 border-r border-gray-800 text-left font-normal"
-                      >
-                        <div className="flex items-start gap-3">
-                          <span className="text-2xl font-bold text-gray-400 min-w-[2rem]">{rank}</span>
-                          <div>
-                            <TeamName p={p} open={open} toggle={() => toggle(p.id)} />
-                            <Chips p={p} />
-                            <p className="text-sm text-gray-400">
-                              {validatedCount(p)}/{dungeons.length} combats validés
-                            </p>
-                            <Status p={p} />
-                          </div>
-                        </div>
-                      </th>
-                      {dungeons.map((d, i) => (
-                        <Cell key={d.id} p={p} index={i} />
-                      ))}
-                    </tr>
-                    {open && p.dungeonStats.length > 0 && (
-                      <tr className="bg-gray-800/50">
-                        <th
-                          scope="row"
-                          className="sticky left-0 z-10 bg-gray-800 px-4 py-3 text-left text-xs font-normal text-gray-400"
-                        >
-                          Tours / Dégâts
-                        </th>
-                        {dungeons.map(d => {
-                          const s = p.dungeonStats.find(x => x.dungeonId === d.id)
-                          return (
-                            <td key={d.id} className="px-4 py-3 text-center text-xs text-white">
-                              {s ? (
-                                <>
-                                  {s.turns}
-                                  <br />
-                                  {s.damage.toLocaleString('fr-FR')}
-                                </>
-                              ) : (
-                                <span className="text-gray-500">-</span>
-                              )}
-                            </td>
-                          )
-                        })}
-                      </tr>
-                    )}
-                  </React.Fragment>
-                )
-              })}
-            </tbody>
-          </table>
-        </div>
-
+                  <div className="hidden md:block">
+                    <RankingTable rows={group} expanded={expanded} toggle={toggle} caption={`${tier.title} : progression combat par combat`} />
+                  </div>
+                </>
+              )}
+            </section>
+          )
+        })}
         {rows.length === 0 && (
           <div className="text-center py-12 text-gray-400">
             {q.trim() ? 'Aucune équipe ne correspond à votre recherche.' : 'Aucun participant enregistré pour le moment.'}
           </div>
         )}
-      </section>
+      </div>
     </div>
   )
 }
