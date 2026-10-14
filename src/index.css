@@ -3,7 +3,7 @@ body{margin:0;font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Ro
 
 /* Site zoom: everything is scaled down on desktop screens (phones and tablets keep their size). */
 :root{--site-zoom:1}
-@media (min-width:1024px){:root{--site-zoom:.9}}
+@media (min-width:1024px){:root{--site-zoom:.72}}
 html{zoom:var(--site-zoom)}
 
 /* Page width: like Tailwind's `container`, but the empty margin on each side is 2/3 of the container's.
