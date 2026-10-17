@@ -161,11 +161,11 @@
    "Enutrof",
    "Xelor"
   ],
-  "progressStepId": "mansot-royal",
+  "progressStepId": "chene-mou",
   "status": "alive",
   "deathStepId": null,
   "dungeonStats": [],
-  "lastUpdate": "2026-10-12T12:56:49+02:00"
+  "lastUpdate": "2026-10-17T16:34:40+02:00"
  },
  {
   "id": "team-9",
@@ -335,11 +335,11 @@
    "Enutrof",
    "Ouginak"
   ],
-  "progressStepId": "kanigroula",
+  "progressStepId": "koumiho",
   "status": "alive",
   "deathStepId": null,
   "dungeonStats": [],
-  "lastUpdate": "2026-10-16T23:27:03+02:00"
+  "lastUpdate": "2026-10-17T16:34:40+02:00"
  },
  {
   "id": "team-18",
