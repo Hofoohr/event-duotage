@@ -43,6 +43,7 @@ const statusLabel: Record<CellStatus, string> = {
 
 function Status({ p }: { p: Participant }) {
   if (p.status === 'alive') return <p className="text-sm text-green-400 font-semibold">✓ Toujours en vie</p>
+  if (p.status === 'abandoned') return <p className="text-sm text-gray-400 font-semibold">⚑ Abandon</p>
   const name = dungeons.find(d => d.id === p.deathStepId)?.name
   return (
     <p className="text-sm text-red-400 font-semibold">

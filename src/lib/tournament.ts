@@ -22,7 +22,7 @@ export interface Participant {
   members: Member[]
   classes?: string[]
   progressStepId: string | null
-  status: 'alive' | 'dead'
+  status: 'alive' | 'dead' | 'abandoned'
   deathStepId: string | null
   dungeonStats: { dungeonId: string; turns: number; damage: number }[]
   lastUpdate: string
@@ -89,6 +89,7 @@ export function cellStatus(p: Participant, d: Dungeon): CellStatus {
   if (cur === 0) return 'not-reached'
   // once the free-order bosses are reached, a living team may take any of the remaining ones
   if (cur < d.order) return p.status === 'alive' && d.freeOrder && dungeons.find(x => x.order === cur)?.freeOrder ? 'available' : 'not-reached'
+  if (p.status === 'abandoned') return 'not-reached'
   return p.status === 'dead' ? 'death' : 'in-progress'
 }
 
