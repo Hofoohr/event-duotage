@@ -252,7 +252,7 @@ function Cell({ p, index }: { p: Participant; index: number }) {
           <div className="text-xs text-red-400/80 font-semibold">Mort</div>
         </>
       )}
-      {status === 'in-progress' && <NextBoss boss={d} />}
+      {status === 'in-progress' && <NextBoss boss={d} label={d.freeOrder ? 'Disponible' : 'En cours'} />}
       {status === 'available' && <NextBoss boss={d} label="Disponible" />}
       {status === 'not-reached' && (
         <>
