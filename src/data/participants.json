@@ -59,8 +59,9 @@
   "progressStepId": "barberyl",
   "status": "dead",
   "deathStepId": "barberyl",
+  "skippedStepIds": ["corruption"],
   "dungeonStats": [],
-  "lastUpdate": "2026-10-23T20:35:32+02:00"
+  "lastUpdate": "2026-10-23T20:38:22+02:00"
  },
  {
   "id": "team-4",
