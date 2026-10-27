@@ -121,10 +121,10 @@
    "Huppermage"
   ],
   "progressStepId": "koumiho",
-  "status": "alive",
-  "deathStepId": null,
+  "status": "dead",
+  "deathStepId": "koumiho",
   "dungeonStats": [],
-  "lastUpdate": "2026-10-23T01:12:47+02:00"
+  "lastUpdate": "2026-10-27T20:30:15+02:00"
  },
  {
   "id": "team-7",
