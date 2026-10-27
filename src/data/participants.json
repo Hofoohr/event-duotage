@@ -124,6 +124,7 @@
   "status": "dead",
   "deathStepId": "koumiho",
   "deathImageUrl": "boss/tsume-bozu.png",
+  "deathText": "Ont testé la mort en salles",
   "dungeonStats": [],
   "lastUpdate": "2026-10-27T20:30:15+02:00"
  },
