@@ -28,6 +28,8 @@ export interface Participant {
   skippedStepIds?: string[]
   /** Image shown instead of the boss's own on the team's death cell (e.g. a specific room). */
   deathImageUrl?: string
+  /** Replaces "Mort face à <boss>" on the team's status line. */
+  deathText?: string
   dungeonStats: { dungeonId: string; turns: number; damage: number }[]
   lastUpdate: string
 }
