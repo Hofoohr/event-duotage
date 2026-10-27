@@ -30,6 +30,8 @@ export interface Participant {
   deathImageUrl?: string
   /** Replaces "Mort face à <boss>" on the team's status line. */
   deathText?: string
+  /** Replaces the default laughing emoji after the death text. */
+  deathEmoji?: string
   dungeonStats: { dungeonId: string; turns: number; damage: number }[]
   lastUpdate: string
 }
