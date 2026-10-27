@@ -26,6 +26,8 @@ export interface Participant {
   deathStepId: string | null
   /** Free-order bosses the team went past without beating them. */
   skippedStepIds?: string[]
+  /** Image shown instead of the boss's own on the team's death cell (e.g. a specific room). */
+  deathImageUrl?: string
   dungeonStats: { dungeonId: string; turns: number; damage: number }[]
   lastUpdate: string
 }

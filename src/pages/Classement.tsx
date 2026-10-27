@@ -240,7 +240,7 @@ function Cell({ p, index }: { p: Participant; index: number }) {
     <td
       className={`${split || status === 'in-progress' || status === 'available' ? 'relative p-0' : 'px-4 py-4'} text-center min-w-[110px] ${startsGroup(d) ? 'border-l-4 border-l-brand-500' : ''} ${cellStyle[status === 'in-progress' && d.freeOrder ? 'available' : status]}`}
     >
-      {split && <ClassSplit classes={[classes[0], classes[1]]} kind={status as SplitKind} boss={showBoss ? d : undefined} />}
+      {split && <ClassSplit classes={[classes[0], classes[1]]} kind={status as SplitKind} boss={showBoss ? (status === 'death' && p.deathImageUrl ? { ...d, iconUrl: p.deathImageUrl } : d) : undefined} />}
       {!split && status === 'completed' && (
         <>
           <span aria-hidden="true" className="text-3xl text-green-400">✓</span>
