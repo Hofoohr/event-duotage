@@ -48,8 +48,8 @@ function Status({ p }: { p: Participant }) {
   return (
     <p className="text-sm text-red-400 font-semibold">
       ✕ {p.deathText ?? `Mort face à ${name || 'un combat'}`}{' '}
-      <span role="img" aria-label="mort de rire">
-        😂
+      <span role="img" aria-label={p.deathEmoji ? 'emoji' : 'mort de rire'}>
+        {p.deathEmoji ?? '😂'}
       </span>
     </p>
   )
