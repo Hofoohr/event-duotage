@@ -264,11 +264,11 @@
    "Crâ",
    "Sacrieur"
   ],
-  "progressStepId": "danti",
+  "progressStepId": "corruption",
   "status": "alive",
   "deathStepId": null,
   "dungeonStats": [],
-  "lastUpdate": "2026-10-23T01:12:20+02:00"
+  "lastUpdate": "2026-10-29T23:05:23+02:00"
  },
  {
   "id": "team-14",
