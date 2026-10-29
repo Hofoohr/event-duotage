@@ -12,6 +12,7 @@ import {
   rankTeams,
   startsGroup,
   validatedCount,
+  currentStep,
   type CellStatus,
   type Dungeon,
   type Participant,
@@ -265,6 +266,41 @@ function Cell({ p, index }: { p: Participant; index: number }) {
   )
 }
 
+/** Phone cards: the last boss beaten and the next one to face; only the killer for a dead team. */
+function BossTile({ boss, label, src, tone }: { boss: Dungeon; label: string; src?: string; tone: 'done' | 'next' | 'death' }) {
+  const border = { done: 'border-green-700/60', next: 'border-brand-500/60', death: 'border-red-700/60' }[tone]
+  const text = { done: 'text-green-400', next: 'text-brand-400', death: 'text-red-400' }[tone]
+  return (
+    <div className={`flex-1 min-w-0 rounded-lg border ${border} bg-gray-800/40 px-2 py-2 text-center`}>
+      <p className={`text-[11px] font-semibold uppercase tracking-wide ${text}`}>{label}</p>
+      <img src={import.meta.env.BASE_URL + (src ?? boss.iconUrl)} alt="" className="mx-auto mt-1 h-16 w-16 object-contain" />
+      <p className="mt-1 truncate text-xs text-gray-200">{boss.name}</p>
+    </div>
+  )
+}
+
+function MobileBosses({ p }: { p: Participant }) {
+  const cur = currentStep(p)
+  if (p.status === 'dead') {
+    const boss = dungeons.find(d => d.id === p.deathStepId)
+    return boss ? (
+      <div className="mt-3 flex gap-2">
+        <BossTile boss={boss} label="Vaincu par" src={p.deathImageUrl} tone="death" />
+        <div className="flex-1" aria-hidden="true" />
+      </div>
+    ) : null
+  }
+  const last = [...dungeons].reverse().find(d => d.order < cur && !p.skippedStepIds?.includes(d.id))
+  const next = p.status === 'alive' ? dungeons.find(d => d.order === Math.max(cur, 1)) : undefined
+  if (!last && !next) return null
+  return (
+    <div className="mt-3 flex gap-2">
+      {last && <BossTile boss={last} label="Dernier battu" tone="done" />}
+      {next && <BossTile boss={next} label="Prochain" tone="next" />}
+    </div>
+  )
+}
+
 export default function Classement() {
   const [q, setQ] = useState('')
   const [expanded, setExpanded] = useState<Set<string>>(new Set())
@@ -338,6 +374,7 @@ export default function Classement() {
                       {validatedCount(p)}/{dungeons.length} combats validés
                     </p>
                     <Status p={p} />
+                    <MobileBosses p={p} />
                     <div className="mt-3 flex gap-0.5" role="img" aria-label={`${validatedCount(p)} combats validés sur ${dungeons.length}`}>
                       {dungeons.map(d => (
                         <span
