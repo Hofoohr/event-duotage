@@ -78,11 +78,11 @@
    "Pandawa",
    "Xelor"
   ],
-  "progressStepId": "chene-mou",
+  "progressStepId": "sphincter-cell",
   "status": "alive",
   "deathStepId": null,
   "dungeonStats": [],
-  "lastUpdate": "2026-10-29T20:35:37+02:00"
+  "lastUpdate": "2026-10-31T16:46:01+02:00"
  },
  {
   "id": "team-5",
@@ -340,10 +340,10 @@
    "Ouginak"
   ],
   "progressStepId": "ombre",
-  "status": "alive",
-  "deathStepId": null,
+  "status": "dead",
+  "deathStepId": "ombre",
   "dungeonStats": [],
-  "lastUpdate": "2026-10-23T01:12:20+02:00"
+  "lastUpdate": "2026-10-31T16:46:01+02:00"
  },
  {
   "id": "team-18",
