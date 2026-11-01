@@ -106,7 +106,12 @@ export function cellStatus(p: Participant, d: Dungeon): CellStatus {
  * Ties share a rank (1, 1, 3…).
  */
 export function rankTeams(list: Participant[]) {
-  const score = (p: Participant) => currentStep(p) * 2 + (p.status === 'alive' ? 1 : 0)
+  const firstFree = dungeons.find(d => d.freeOrder)?.order ?? Infinity
+  // Past Dantinea the bosses can be done in any order: teams are compared on fights beaten, alive or not.
+  const score = (p: Participant) =>
+    currentStep(p) >= firstFree
+      ? (validatedCount(p) + 1) * 2
+      : currentStep(p) * 2 + (p.status === 'alive' ? 1 : 0)
   const sorted = [...list].sort(
     (a, b) => score(b) - score(a) || a.displayName.localeCompare(b.displayName, 'fr'),
   )
