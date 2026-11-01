@@ -166,10 +166,10 @@
    "Xelor"
   ],
   "progressStepId": "ombre",
-  "status": "alive",
-  "deathStepId": null,
+  "status": "dead",
+  "deathStepId": "ombre",
   "dungeonStats": [],
-  "lastUpdate": "2026-11-01T01:31:39+02:00"
+  "lastUpdate": "2026-11-01T23:12:24+02:00"
  },
  {
   "id": "team-9",
