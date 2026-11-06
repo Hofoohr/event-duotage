@@ -78,11 +78,11 @@
    "Pandawa",
    "Xelor"
   ],
-  "progressStepId": "danti",
+  "progressStepId": "corruption",
   "status": "alive",
   "deathStepId": null,
   "dungeonStats": [],
-  "lastUpdate": "2026-11-02T16:51:37+02:00"
+  "lastUpdate": "2026-11-06T20:24:00+02:00"
  },
  {
   "id": "team-5",
