@@ -236,8 +236,8 @@ function Cell({ p, index }: { p: Participant; index: number }) {
   const status = cellStatus(p, d)
   const classes = p.classes ?? []
   const split = (status === 'death' || status === 'completed') && classes.length === 2
-  // boss shown on the last validated fight of a living team, or on the fight a dead team lost
-  const showBoss = status === 'death' || (status === 'completed' && p.status === 'alive' && d.order === lastBeatenOrder(p))
+  // boss shown on the last validated fight of a living team (and on every free-order boss it beat), or on the fight a dead team lost
+  const showBoss = status === 'death' || (status === 'completed' && p.status === 'alive' && (d.order === lastBeatenOrder(p) || d.freeOrder))
   return (
     <td
       className={`${split || status === 'in-progress' || status === 'available' ? 'relative p-0' : 'px-4 py-4'} text-center min-w-[110px] ${startsGroup(d) ? 'border-l-4 border-l-brand-500' : ''} ${cellStyle[status === 'in-progress' && d.freeOrder ? 'available' : status]}`}
