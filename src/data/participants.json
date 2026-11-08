@@ -35,11 +35,12 @@
    "Sadida",
    "Eniripsa"
   ],
-  "progressStepId": "corruption",
+  "progressStepId": "tal-kasha",
   "status": "alive",
   "deathStepId": null,
+  "skippedStepIds": ["corruption"],
   "dungeonStats": [],
-  "lastUpdate": "2026-11-08T19:46:54+02:00"
+  "lastUpdate": "2026-11-08T21:52:28+02:00"
  },
  {
   "id": "team-3",

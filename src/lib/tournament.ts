@@ -89,11 +89,24 @@ export function currentStep(p: Participant): number {
 }
 
 /** The current step is either in progress or the one the team died on: it is not validated. */
+/** Order of the last fight actually beaten (skipped free-order bosses do not count). */
+export const lastBeatenOrder = (p: Participant) => {
+  for (let o = currentStep(p) - 1; o >= 1; o--) {
+    const d = dungeons.find(x => x.order === o)
+    if (d && !p.skippedStepIds?.includes(d.id)) return o
+  }
+  return 0
+}
+
 export const validatedCount = (p: Participant) => Math.max(currentStep(p) - 1 - (p.skippedStepIds?.length ?? 0), 0)
 
 export function cellStatus(p: Participant, d: Dungeon): CellStatus {
   const cur = currentStep(p)
-  if (cur > d.order) return p.skippedStepIds?.includes(d.id) ? 'not-reached' : 'completed'
+  if (cur > d.order) {
+    if (!p.skippedStepIds?.includes(d.id)) return 'completed'
+    // a skipped free-order boss is still open to a living team
+    return p.status === 'alive' ? 'available' : 'not-reached'
+  }
   if (cur === 0) return 'not-reached'
   // once the free-order bosses are reached, a living team may take any of the remaining ones
   if (cur < d.order) return p.status === 'alive' && d.freeOrder && dungeons.find(x => x.order === cur)?.freeOrder ? 'available' : 'not-reached'
