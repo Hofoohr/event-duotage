@@ -123,8 +123,8 @@ export function rankTeams(list: Participant[]) {
   // Rank = fight reached, so a team that died on a boss ties with the teams about to face it.
   // Past Dantinea the bosses can be done in any order: teams are compared on fights beaten.
   const score = (p: Participant) => (currentStep(p) >= firstFree ? validatedCount(p) + 1 : currentStep(p))
-  // Within a tie, teams still alive are listed before the others.
-  const alive = (p: Participant) => (p.status === 'alive' ? 0 : 1)
+  // Within a tie, teams still alive are listed after the others.
+  const alive = (p: Participant) => (p.status === 'alive' ? 1 : 0)
   const sorted = [...list].sort(
     (a, b) =>
       score(b) - score(a) || alive(a) - alive(b) || a.displayName.localeCompare(b.displayName, 'fr'),
