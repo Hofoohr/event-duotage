@@ -78,11 +78,12 @@
    "Pandawa",
    "Xelor"
   ],
-  "progressStepId": "corruption",
-  "status": "alive",
-  "deathStepId": null,
+  "progressStepId": "tal-kasha",
+  "status": "dead",
+  "deathStepId": "tal-kasha",
+  "skippedStepIds": ["corruption", "barberyl"],
   "dungeonStats": [],
-  "lastUpdate": "2026-11-06T20:24:00+02:00"
+  "lastUpdate": "2026-11-08T21:25:20+02:00"
  },
  {
   "id": "team-5",
