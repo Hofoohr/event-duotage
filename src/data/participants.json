@@ -35,11 +35,11 @@
    "Sadida",
    "Eniripsa"
   ],
-  "progressStepId": "bworker",
+  "progressStepId": "corruption",
   "status": "alive",
   "deathStepId": null,
   "dungeonStats": [],
-  "lastUpdate": "2026-11-08T15:36:13+02:00"
+  "lastUpdate": "2026-11-08T19:46:54+02:00"
  },
  {
   "id": "team-3",
